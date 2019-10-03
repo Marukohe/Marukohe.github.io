@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("https://marukohe.github.io/"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="概率论,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第一章 随机事件与概率1. 随机事件及其运算随机试验 样本空间 随机事件">
+<meta name="keywords" content="概率论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="概率论与数理统计">
+<meta property="og:url" content="https://marukohe.github.io/2019/10/03/概率论笔记/index.html">
+<meta property="og:site_name" content="Maruko&#39;s blog">
+<meta property="og:description" content="第一章 随机事件与概率1. 随机事件及其运算随机试验 样本空间 随机事件">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-24T12:26:56.388Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="概率论与数理统计">
+<meta name="twitter:description" content="第一章 随机事件与概率1. 随机事件及其运算随机试验 样本空间 随机事件">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://marukohe.github.io/2019/10/03/概率论笔记/">
+
+
+
+
+
+  <title>概率论与数理统计 | Maruko's blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Maruko's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">写不完的作业，看不懂的汇编</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-users"></i> <br>
+            
+            友链
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://marukohe.github.io/2019/10/03/概率论笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marukohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/img.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maruko's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">概率论与数理统计</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-03T14:43:46+08:00">
+                2019-10-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/03/概率论笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/03/概率论笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第一章-随机事件与概率"><a href="#第一章-随机事件与概率" class="headerlink" title="第一章 随机事件与概率"></a>第一章 随机事件与概率</h1><h2 id="1-随机事件及其运算"><a href="#1-随机事件及其运算" class="headerlink" title="1. 随机事件及其运算"></a>1. 随机事件及其运算</h2><h3 id="随机试验-样本空间-随机事件"><a href="#随机试验-样本空间-随机事件" class="headerlink" title="随机试验 样本空间 随机事件"></a>随机试验 样本空间 随机事件</h3><a id="more"></a>
+
+<ol>
+<li>随机试验<ul>
+<li>具有不确定性(或偶然性)的现象称为随机现象</li>
+<li>把对某种随机现象的一次观察\观测或测量等称为一个试验</li>
+</ul>
+</li>
+<li>样本空间<ul>
+<li>随机试验$E​$的所有可能结果组成的集合称为<strong>样本空间</strong>,记为$\Omega​$,样本空间的元素,即$E​$的每个结果,称为<strong>样本点</strong></li>
+</ul>
+</li>
+<li>随机事件<ul>
+<li>基本事件：一个样本点组成的单点集，不可再分。</li>
+<li>随机事件：称试验E样本空间$\Omega$的子集为E的随机事件，一般用大写字母表示。</li>
+</ul>
+</li>
+<li>随机事件发生：该事件所包含的一个样本点在试验中出现。<ul>
+<li>必然事件：样本空间本身</li>
+<li>不可能事件：空集</li>
+</ul>
+</li>
+</ol>
+<h3 id="事件的关系与运算"><a href="#事件的关系与运算" class="headerlink" title="事件的关系与运算"></a>事件的关系与运算</h3><h4 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h4><ol>
+<li><p>包含关系 B$\supset$ A<br> 如果A发生必导致B发生，则称B包含A，记为B$\supset$ A</p>
+</li>
+<li><p>互斥<br>A,B不可能同时发生</p>
+</li>
+<li><p>相等</p>
+</li>
+</ol>
+<h4 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h4><ol>
+<li>事件的并（和）</li>
+<li>事件的交（积）</li>
+<li>事件的差<br>A发生，而B不发生的事件称为A与B的差。</li>
+<li>对立事件<br>A不发生的事件称为Ａ的对立事件，记为$\overline A​$</li>
+</ol>
+<h2 id="2-事件的概率及性质"><a href="#2-事件的概率及性质" class="headerlink" title="2. 事件的概率及性质"></a>2. 事件的概率及性质</h2><h3 id="频率的定义和性质"><a href="#频率的定义和性质" class="headerlink" title="频率的定义和性质"></a>频率的定义和性质</h3><p>定义：在相同条件下，进行了n次试验，在这n次试验中，事件A发生的次数$n_A$称为事件$A$发生的频数.比值$n_A/n$称为事件$A​$发生的频率<br>事件A的频率具有如下性质：  </p>
+<ul>
+<li>$0\leq f_n(A)\leq 1​$</li>
+<li>$f_n(\Omega) = 1​$</li>
+<li>互不相容的事件的和的频率等于他们分别的频率相加。  </li>
+</ul>
+<p>频率的稳定性</p>
+<h3 id="概率的定义"><a href="#概率的定义" class="headerlink" title="概率的定义"></a>概率的定义</h3><ol>
+<li><p>定义: 设$E$是随机试验,$\Omega$是其样本空间,对于$E$的每一个事件$A$赋予一个实数,记为$P(A)$,称为事件$A$的概率.</p>
+</li>
+<li><p>概率的性质:</p>
+<ul>
+<li><p>$P(\emptyset) = 0$</p>
+</li>
+<li><p>若$A_1,A_2,…,A_n​$是两两不相容的事件,则</p>
+<p>$P(A_1+A_2+…+A_n)=P(A_1)+…P(A_n)$</p>
+</li>
+<li><p>$P(A-B)=P(A)-P(AB)$</p>
+</li>
+<li><p>对于任意两个事件$A,B​$,有</p>
+<p>$P(A\cup B)=P(A)+P(B)-P(AB)$</p>
+</li>
+<li><p>$P(\overline A) = 1-P(A)$</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-等可能概率（古典概型）"><a href="#3-等可能概率（古典概型）" class="headerlink" title="3. 等可能概率（古典概型）"></a>3. 等可能概率（古典概型）</h2><p>$$<br>P(A) = \frac{k}{n}=\frac{A包含的事件数}{\Omega包含的事件数}<br>$$</p>
+<h2 id="4-几何概率"><a href="#4-几何概率" class="headerlink" title="4. 几何概率"></a>4. 几何概率</h2><p>$$<br>P(A) = \frac{A的几何度量}{\Omega的几何度量} = \frac{\mu(A)}{\mu(\Omega)}<br>$$</p>
+<h2 id="5-条件概率"><a href="#5-条件概率" class="headerlink" title="5. 条件概率"></a>5. 条件概率</h2><h3 id="条件概率"><a href="#条件概率" class="headerlink" title="条件概率"></a>条件概率</h3><ul>
+<li><p>条件概率的概念</p>
+<p>事件$B$发生的条件下求$A$发生的概率,将此概率记作$P(A|B)$</p>
+</li>
+</ul>
+<h3 id="条件概率的性质"><a href="#条件概率的性质" class="headerlink" title="条件概率的性质"></a>条件概率的性质</h3><ul>
+<li><p>非负性</p>
+</li>
+<li><p>规范性</p>
+<p>$P(\Omega|B) = 1$</p>
+</li>
+<li><p>可列可加性: 如果随机事件$A_1,A_2,…,A_n​$互不相容,则<br>$$<br>P(<em>{n = 1}^\infty A_n|B) = \sum\limits</em>{n=1}^\infty P(A_n|B)<br>$$</p>
+</li>
+</ul>
+<h3 id="条件概率的计算"><a href="#条件概率的计算" class="headerlink" title="条件概率的计算"></a>条件概率的计算</h3><p>$$<br>P(A|B)=\frac{P(AB)}{P(B)}<br>$$</p>
+<ul>
+<li><p>乘法公式<br>$$<br>P(B|A) = \frac{P(AB)}{P(A)}<br>$$</p>
+</li>
+<li><p>多个事件的乘法公式<br>$$<br>P(A_1A_2A_3) = P(A_1)P(A_2|A_1)P(A_3|A_1A_2)<br>$$</p>
+</li>
+</ul>
+<h4 id="全概率公式"><a href="#全概率公式" class="headerlink" title="全概率公式"></a>全概率公式</h4><p>$$<br>P(B)=\sum\limits_{k=1}^\infty P(A_k)P(B|A_k)<br>$$</p>
+<h4 id="贝叶斯公式"><a href="#贝叶斯公式" class="headerlink" title="贝叶斯公式"></a>贝叶斯公式</h4><p>$$<br>P(A_k|B) = \frac{P(A_kB)}{P(B)} = \frac{P(A_k)P(B|A_k)}{\sum\limits_{j=1}^\infty P(A_j)P(B|A_j)}<br>$$</p>
+<h2 id="6-独立性"><a href="#6-独立性" class="headerlink" title="6. 独立性"></a>6. 独立性</h2><ul>
+<li><p>设$A,B$是两个随机事件,若满足等式<br>$$<br>P(AB)=P(A)P(B)<br>$$<br>则称事件$A,B$相互独立.</p>
+</li>
+<li><p>事件独立性的性质:</p>
+<ul>
+<li><p>如果事件$A$与$B$相互独立,而且$P(A)&gt;0$,则<br>$$<br>P(B|A)=\frac{P(AB)}{P(A)}=\frac{P(A)P(B)}{P(A)}=P(B)<br>$$</p>
+</li>
+<li><p>概率为0的事件与任意事件相互独立</p>
+</li>
+<li><p>概率为1的事件与任意事件相互独立</p>
+</li>
+<li><p>若随机事件$A$与$B$相互独立,则$A$与$\overline B$,$\overline A$与$B$,$\overline A$与$\overline B$也相互独立</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-独立重复试验"><a href="#7-独立重复试验" class="headerlink" title="7. 独立重复试验"></a>7. 独立重复试验</h2><ul>
+<li><p>泊松定理:</p>
+<p>设$n$为正整数,$\lambda = np_n$为常数,则对任意正整数$k$有<br>$$<br>\lim\limits_{n-&gt;\infty}C_n^kp_n^k(1-p_n)^{n-k} = \frac{\lambda^k}{k!}e^{-\lambda}<br>$$</p>
+</li>
+</ul>
+<h1 id="第二章-随机变量及其分布"><a href="#第二章-随机变量及其分布" class="headerlink" title="第二章 随机变量及其分布"></a>第二章 随机变量及其分布</h1><h2 id="1-随机变量"><a href="#1-随机变量" class="headerlink" title="1. 随机变量"></a>1. 随机变量</h2><ul>
+<li>定义: 设$\Omega = {e}$是随机样本的样本空间,如果对每个$e\in\Omega$,都对应一个单值函数$X=X(e)$,称$X$为随机变量.</li>
+<li>随机变量在某范围内取值称为随机事件.</li>
+<li>分类<ul>
+<li>离散型随机变量</li>
+<li>连续型随机变量</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-离散型随机变量及其分布律"><a href="#2-离散型随机变量及其分布律" class="headerlink" title="2. 离散型随机变量及其分布律"></a>2. 离散型随机变量及其分布律</h2><h3 id="离散型随机变量的分布律与性质"><a href="#离散型随机变量的分布律与性质" class="headerlink" title="离散型随机变量的分布律与性质"></a>离散型随机变量的分布律与性质</h3><ul>
+<li>定义: 如果随机变量$X$的取值是有限个或可列无限个,则称$X$为离散型随机变量</li>
+<li>离散型随机变量的分布律: 打表枚举(偷懒)</li>
+<li>离散型随机变量的性质:<ul>
+<li>对任意自然数$n$,有$p_n\geq 0$</li>
+<li>$\sum\limits_np_n = 1$</li>
+</ul>
+</li>
+</ul>
+<h3 id="常用离散型随机变量"><a href="#常用离散型随机变量" class="headerlink" title="常用离散型随机变量"></a>常用离散型随机变量</h3><h4 id="1-0-1分布或两点分布"><a href="#1-0-1分布或两点分布" class="headerlink" title="(1) 0-1分布或两点分布"></a>(1) 0-1分布或两点分布</h4><ul>
+<li>若随机变量$X$的可能取值只有0,1,且<br>$$<br>P(X=1) = p, \quad P(X=0) = q,\quad (0&lt;p&lt;1,q = 1-p)<br>$$<br>则称$X$服从0-1分布.</li>
+</ul>
+<h4 id="2-二项分布"><a href="#2-二项分布" class="headerlink" title="(2) 二项分布"></a>(2) 二项分布</h4><ul>
+<li><p>如果随机变量$X$的分布律为<br>$$<br>p_k = P(X=k) = C_n^kp^kq^{n-k},;k = 0,1,2,…,n,<br>$$<br>其中$0&lt;p&lt;1,q=1-p$,则称$X$服从参数为$n,p$的二项分布,记为$X\sim B(n,p)$.</p>
+</li>
+<li><p>设$n​$重贝努力试验中$A​$发生的次数为$X​$,则$X​$服从二项分布.</p>
+</li>
+<li><p>超几何分布: “不放回”模型</p>
+</li>
+<li><p>当$(n+1)p$为整数时, $p_k$在$k=(n+1)p-1$和$k=(n+1)p​$达到最大</p>
+</li>
+<li><p>当$(n+1)p$不是整数时,$p_k$在$k=[(n+1)p]$达到最大.其中,$[x]$表示不超过$x$的最大整数.</p>
+</li>
+</ul>
+<h4 id="3-泊松分布"><a href="#3-泊松分布" class="headerlink" title="(3) 泊松分布"></a>(3) 泊松分布</h4><ul>
+<li><p>如果随机变量$X$的分布律为<br>$$<br>p_k = P(X=k) = \frac{\lambda^k}{k!}e^{-\lambda}<br>$$<br>其中$\lambda &gt; 0$为常数,则称$X$服从参数为$\lambda$的泊松分布,记为$X\sim P(\lambda)$.</p>
+</li>
+<li><p>显然$p_k\geq 0$,且<br>$$<br>\sum\limits_{k=0}^\infty p_k = \sum\limits_{k=0}^\infty \frac{\lambda^k}{k!}e^{-\lambda} = e^{-\lambda}\sum\limits_{k=0}^\infty \frac{\lambda^k}{k!} = e^{-\lambda}e^{\lambda} = 1<br>$$</p>
+</li>
+<li><p>$\lambda$的概率意义: 事件的平均发生次数</p>
+</li>
+</ul>
+<h4 id="4-几何分布"><a href="#4-几何分布" class="headerlink" title="(4) 几何分布"></a>(4) 几何分布</h4><ul>
+<li><p>如果随机变量的分布律为<br>$$<br>p_k = P(X=k) = q^{k-1}p,; k = 1,2,3,…<br>$$<br>其中$0&lt;p&lt;1$为常数,$q = 1-p$,则称$X$服从参数为$p$的几何分布,记为$X\sim g(p)$.</p>
+</li>
+<li><p>几何分布的无记忆性:<br>$$<br>P(X = s+t|X = t) = P(X = s)<br>$$<br>在$n$重贝努利试验中,$A$首次出现时所需的试验次数服从几何分布,若前$t$次试验$A$没有出现,则再试验$s$次,$A$首次出现的概率与前面没有成功的$t$次无关.</p>
+</li>
+</ul>
+<h4 id="5-超几何分布"><a href="#5-超几何分布" class="headerlink" title="(5) 超几何分布"></a>(5) 超几何分布</h4><ul>
+<li><p>如果随机变量$X$ 的分布律为<br>$$<br>p_k = P(X = k) = \frac{C_M^kC_{N-M}^{n-k}}{C_N^n}<br>$$<br>其中$n,M,N$均为自然数,则称随机变量$X$服从参数为$(n,N,M)$的超几何分布,记为$X\sim H(n,N,M)$</p>
+</li>
+<li><p>当$N$充分大时,二项分布与超几何分布的概率值相近.因此在$N$充分大时,可以用不放回抽样代替又放回抽样.</p>
+</li>
+</ul>
+<h2 id="3-随机变量的分布函数"><a href="#3-随机变量的分布函数" class="headerlink" title="3. 随机变量的分布函数"></a>3. 随机变量的分布函数</h2><ul>
+<li>设$X$是一个随机变量,$x$是任意实数,函数$F(x) = P(X\leq x)$称为$X$的分布函数.</li>
+<li>分布函数的性质:<ul>
+<li>$F(x)$为单调不减函数</li>
+<li>$0\leq F(x)\leq 1$且,$F(-\infty) = \lim\limits_{x-&gt;-\infty}F(x) = 0$;$;$$F(+\infty) = \lim\limits_{x-&gt;+\infty} =1 $.</li>
+<li>$F(x+0)= F(x)$,即$F(x)$是右连续的.</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-连续型随机变量"><a href="#4-连续型随机变量" class="headerlink" title="4. 连续型随机变量"></a>4. 连续型随机变量</h2><ul>
+<li><p>设随机变量$X$的分布函数$F(x)$,若存在非负可积函数$p(x)$,对任意$x$,有<br>$$<br>F(x) = \int_{-\infty}^xp(t)dt<br>$$<br>则称$X$为连续型随机变量,称函数$p(x)$为$X$的概率密度函数,简称密度函数.</p>
+</li>
+<li><p>密度函数的基本性质:</p>
+<ol>
+<li><p>对任意的$x$,$p(x)\geq 0$</p>
+</li>
+<li><p>$\int_{-\infty}^{+\infty}p(x)dx = 1$</p>
+</li>
+<li><p>对于任意实数$a,b(a&lt;b)$,<br>$$<br>P(a &lt; X\leq b) = F(b) - F(a) = \int_a^bp(x)dx<br>$$</p>
+</li>
+<li><p>由于$p(x)$为可积函数,根据微积分性质,分布函数$F(x)$为连续函数.</p>
+</li>
+<li><p>若$p(x)$在点$x$连续,则分布函数$F(x)$在$x$处可导,且$p(x) = F’(x)$.</p>
+</li>
+</ol>
+</li>
+<li><p><strong>概率为0的事件与不可能事件并不等价</strong></p>
+</li>
+</ul>
+<h3 id="常见连续型随机变量的分布"><a href="#常见连续型随机变量的分布" class="headerlink" title="常见连续型随机变量的分布"></a>常见连续型随机变量的分布</h3><h4 id="1-均匀分布"><a href="#1-均匀分布" class="headerlink" title="1. 均匀分布"></a>1. 均匀分布</h4><ul>
+<li>若随机变量$X$的概率密度函数为<br>$$<br>p(x)=\begin{cases}<br>\frac{1}{b-a} &amp; a &lt; x &lt; b\\<br>\\<br>0 &amp; 其他<br>\end{cases}<br>$$<br>则称$X$在区间$[a,b]$上服从均匀分布,记为$X\sim U[a,b]$</li>
+</ul>
+<h4 id="2-指数分布"><a href="#2-指数分布" class="headerlink" title="2. 指数分布"></a>2. 指数分布</h4><ul>
+<li><p>若随机变量$X$的概率密度函数为<br>$$<br>p(x) = \begin{cases}<br>\lambda e^{-\lambda x} &amp; x\geq 0 \\<br>\\<br>0 &amp; 其他<br>\end{cases}<br>$$<br>其中$\lambda &gt;０$为常数，则称$Ｘ$服从参数为$\lambda$的指数分布，记为$X\sim E(\lambda)$．</p>
+</li>
+<li><p>$\lambda$是概率意义: $\frac{1}{\lambda}$是$X$取值的平均值．</p>
+</li>
+<li><p>指数分布也具有无记忆性．</p>
+</li>
+</ul>
+<h4 id="3-正态分布"><a href="#3-正态分布" class="headerlink" title="3. 正态分布"></a>3. 正态分布</h4><ul>
+<li><p>若随机变量$X$的密度函数为<br>$$<br>p(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}},\quad -\infty&lt; x&lt; \infty<br>$$<br>其中$\mu,\sigma(&gt;0)$为常数，则称$X$服从参数为$\mu,\sigma^2$的正态分布，记为$X\sim N(\mu,\sigma^2)$．</p>
+</li>
+<li><p>正太概率密度函数的几何特性：</p>
+<ul>
+<li>曲线在$\mu \pm \sigma$处有拐点．</li>
+</ul>
+</li>
+<li><p>若随机变量$X\sim N(\mu, \sigma^2)$，则$Z = \frac{X-\mu}{\sigma}\sim N(0,1)$</p>
+</li>
+</ul>
+<h2 id="５-随机变量函数的分布"><a href="#５-随机变量函数的分布" class="headerlink" title="５.随机变量函数的分布"></a>５.随机变量函数的分布</h2><h3 id="一．离散型随机变量的函数"><a href="#一．离散型随机变量的函数" class="headerlink" title="一．离散型随机变量的函数"></a>一．离散型随机变量的函数</h3><ul>
+<li>直接对应好了，好像没什么记的．</li>
+</ul>
+<h3 id="二．连续型随机变量函数的分布"><a href="#二．连续型随机变量函数的分布" class="headerlink" title="二．连续型随机变量函数的分布"></a>二．连续型随机变量函数的分布</h3><ul>
+<li><p>求法一: 分布函数法</p>
+<p>先求$Y$的分布函数$F_Y(y)$,<br>$$<br>F_Y(y) = P(Y\leq y) = P(g(x)\leq y) = \int\limits_{x: g(x)\leq y}p_X(x)dx<br>$$<br>然后,$p_Y(y) = F’_Y(y)$.</p>
+</li>
+<li><p>定理: 若$X$的分布函数$F(x)$严格单调递增,则随机变量$Y=F(x)$服从$[0,1]$上的均匀分布.</p>
+</li>
+<li><p>求法二: 公式法</p>
+<p>设随机变量$X$的可能取值范围为$(a,b)$,$X$是概率密度为$p_X(x), a &lt; x &lt; b$,(其中$a$可为$-\infty$, $b$可为$+\infty$),设函数$y = g(x)$处处可导,且恒有$g’(x)&gt;0$(或恒有$g’(x)&lt;0$),则$Y=g(X)$为连续型随机变量,其概率密度为<br>$$<br>p_Y(y) = \begin{cases}<br>p_x[g^{-1}(y)]\cdot|[g^{-1}y]’| &amp; \alpha &lt; y &lt; \beta\\<br>\\<br>0 &amp; 其他<br>\end{cases}<br>$$</p>
+</li>
+<li><p>$X\sim N(\mu,\sigma^2)$,则$Y = aX+b\sim N(a\mu + b,(a\sigma)^2)$.</p>
+</li>
+</ul>
+<h1 id="第三章-随机向量及其分布"><a href="#第三章-随机向量及其分布" class="headerlink" title="第三章 随机向量及其分布"></a>第三章 随机向量及其分布</h1><h2 id="1-二维随机变量及其分布函数"><a href="#1-二维随机变量及其分布函数" class="headerlink" title="1. 二维随机变量及其分布函数"></a>1. 二维随机变量及其分布函数</h2><h3 id="一-二维离散型随机向量"><a href="#一-二维离散型随机向量" class="headerlink" title="一. 二维离散型随机向量"></a>一. 二维离散型随机向量</h3><ul>
+<li><p>定义: 若二维随机向量$(X,Y)$的每个分量都是离散型的岁变量,则称$(X,Y)$为一个二维离散型随机向量.</p>
+</li>
+<li><p>定义: 设随机向量$(X,Y)$的虽有可能取值为$(x_i,y_j), i,j = 1,2…$,假设当$i\neq k , j \neq l$时$x_i\neq x_k,y_j\neq y_l$,则$P(X = x_i, Y = y_j)  = p{ij},i,j  = 1,2…$称为随机向量$(X,Y)$的联合分布率或者$X$和$Y$的联合概率分布.</p>
+</li>
+<li><p>定义: 对任意的实数$x,y$,称二元函数$F(x,y) = P(X\leq x, Y\leq y)$为随机变量$(X,Y)$的联合分布函数,记为$(X,Y)\sim F(x,y)$</p>
+</li>
+<li><p>分布函数的性质:</p>
+<ul>
+<li><p>单调不减性;</p>
+</li>
+<li><p>$0\leq F(x,y)\leq 1$,且任意固定的$y\in R$,$F(-\infty,y) = \lim\limits_{x-&gt;-\infty}F(x,y) = 0$,任意固定的$x\in R$同理.且$F(-\infty,-\infty) = 0$, $F(+\infty, +\infty) = 1$</p>
+</li>
+<li><p>$F(x,y)$对$x$和$y$是有连续的,即<br>$$<br>F(x,y) = \lim\limits_{z-&gt;x^+}F(z,y)\\<br>F(x,y) = \lim\limits_{z-&gt;y^+}F(x,z)<br>$$</p>
+</li>
+<li><p>对于任意实数$x_1\leq x_2, y_1\leq y_2$<br>$$<br>F(x_2,y_2) - F(x_1,y_2)-F(x_2,y_1)+F(x_1,y_1)\geq 0<br>$$</p>
+</li>
+</ul>
+</li>
+<li><p>任何二维随机变量的分布函数都具有上述四条性质</p>
+</li>
+<li><p>边缘分布函数:</p>
+<ul>
+<li>$F_X(x) = P(X\leq x) = P(X\leq x, Y &lt; +\infty) = \lim\limits_{y\rightarrow+\infty}P(X\leq x, Y\leq y) = F(x,+\infty)$</li>
+<li>$F_Y(y) = F(+\infty,y)$</li>
+</ul>
+</li>
+</ul>
+<h3 id="二-二维连续型随机向量"><a href="#二-二维连续型随机向量" class="headerlink" title="二. 二维连续型随机向量"></a>二. 二维连续型随机向量</h3><ul>
+<li><p>设二维随机向量$(X,Y)$的分布函数为$F(x,y)$,若存在非负可积二元函数$p(x,y)$,对任意的$x,y\in R$,有<br>$$<br>F(x,y) = \int_{-\infty}^x\int_{-\infty}^yp(u,v)dudv<br>$$<br>则称$(X,Y)$为二维连续型随机向量,而称$P(x,y)$为$(X,Y)$的一个联合概率密度函数,简称联合密度.</p>
+</li>
+<li><p>边缘密度函数</p>
+<ul>
+<li>$p_X(x) = \int_{-\infty}^{+\infty} p(x,v)dv$</li>
+<li>$p_Y(y) = \int_{-\infty}^{+\infty}p(u,y)du$</li>
+</ul>
+</li>
+<li><p>若二维随机向量$(X,Y)$的联合分布函数为,任意$x,y\in R$,<br>$$<br>p(x,y) = \frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}}exp\{-\frac{1}{2(1-\rho^2)}[(\frac{x-\mu_1}{\sigma_1})^2-2\rho(\frac{x-\mu_1}{\sigma_1})(\frac{x-\mu_2}{\sigma_2}) + (\frac{y-\mu_2}{\sigma_2})^2]\}<br>$$<br>其中,$\mu_1,\mu_2\in R$,$\sigma_1,\sigma_2&gt;0,|\rho|&lt;1$均为常数,则称$(X,Y)$服从二元正态分布,记为$(X,Y)\sim N(\mu_1,\mu_2,\sigma_1,\sigma_2,\rho)$.</p>
+<p>其中$X$的边缘密度函数$X\sim N(\mu_1,\sigma_1^2)$,$Y$的边缘密度函数$Y\sim N(\mu_2,\sigma_2^2)$.</p>
+</li>
+</ul>
+<h2 id="2-条件分布"><a href="#2-条件分布" class="headerlink" title="2. 条件分布"></a>2. 条件分布</h2><h3 id="一-离散型随机向量的条件概率分布"><a href="#一-离散型随机向量的条件概率分布" class="headerlink" title="一. 离散型随机向量的条件概率分布"></a>一. 离散型随机向量的条件概率分布</h3><ul>
+<li>$$<br>P(Y=y_j|X=x_i) = \frac{P(X=x_i,Y=y_j)}{P(X=x_i)} = \frac{p_{ij}}{p_i}<br>$$</li>
+</ul>
+<h3 id="二-连续型随机向量的条件概率"><a href="#二-连续型随机向量的条件概率" class="headerlink" title="二. 连续型随机向量的条件概率"></a>二. 连续型随机向量的条件概率</h3><ul>
+<li><p>在条件$X=x$的条件下,$Y$的条件分布函数<br>$$<br>F_{Y|X = x}(y) = P(Y\leq y|X=x)=\int_{-\infty}^y\frac{p(x,v)}{p_X(x)}dv<br>$$</p>
+</li>
+<li><p>密度函数<br>$$<br>p_{Y|X=x}(y) = \frac{p(x,y)}{p_X(x)}<br>$$</p>
+</li>
+</ul>
+<h2 id="3-随机变量的独立性"><a href="#3-随机变量的独立性" class="headerlink" title="3. 随机变量的独立性"></a>3. 随机变量的独立性</h2><ul>
+<li><p>设$X$和$Y$是两个离散型随机变量,若任意一组$(x_i,y_j)$,<br>$$<br>P(X=x_i, Y=y_j) = P(X=x_i)P(Y=y_j)<br>$$<br>即对于任意的$i,j=1,2…,p_{ij} = p_i\cdot p_j$,则称随机变量$X$和$Y$相互独立.</p>
+</li>
+<li><p>设$(X,Y)$有联合密度函数$p(x,y)$,则$X$和$Y$独立的充要条件是,存在函数$g_1(x)$和$g_2(y)$,使得<br>$$<br>p(x,y) = g_1(x)g_2(y)<br>$$</p>
+</li>
+</ul>
+<h2 id="4-二维随机向量函数的分布"><a href="#4-二维随机向量函数的分布" class="headerlink" title="4. 二维随机向量函数的分布"></a>4. 二维随机向量函数的分布</h2><h3 id="一-二维离散型随机向量函数的分布"><a href="#一-二维离散型随机向量函数的分布" class="headerlink" title="一. 二维离散型随机向量函数的分布"></a>一. 二维离散型随机向量函数的分布</h3><ul>
+<li><p>随机变量和的分布:</p>
+<p>设$Z = X+Y$,其分布率为<br>$$<br>P(Z = z_k) = \sum\limits_{x_i}P(X=x_i,Y=z_k-x_i)<br>$$</p>
+</li>
+<li></li>
+</ul>
+<h3 id="二-二维连续型随机向量函数的分布"><a href="#二-二维连续型随机向量函数的分布" class="headerlink" title="二. 二维连续型随机向量函数的分布"></a>二. 二维连续型随机向量函数的分布</h3><ul>
+<li><p>和的分布:</p>
+<p>设$(X,Y)$有联合密度函数$p(x,y)$,$Z=X+Y$,则$Z$是一个连续型随机变量,其密度函数为<br>$$<br>p_Z(z) = \int_{-\infty}^{+\infty}p(x,z-x)dx<br>$$<br>特别,当$X$和$Y$独立,且$X$有密度函数$p_X(x)$,$Y$有密度函数$p_Y(y)$时,由于$p(x,y) = p_X(x)p_Y(y)$,故而$Z$的密度函数为<br>$$<br>p_Z(z) = \int_{-\infty}^{+\infty}p_X(x)p_Y(z-x)dx<br>$$<br>这个等式称为$p_X(x)$和$p_Y(y)$的卷积公式.</p>
+</li>
+<li><p>商的分布:</p>
+<p> $(X,Y)$有联合密度函数$p(x,y)$,$Y\neq 0$,定义$Z=X/Y$,则$Z$是一个连续型随机变量,其密度函数为:<br>$$<br>p_Z(z) = \int_{-\infty}^{+\infty}|y|p(zy,y)dy<br>$$</p>
+</li>
+<li><p>最大(小)值的分布</p>
+<p>设随机变量$X$和$Y$相互独立,且分别有分布函数$F_X(x)$和$F_Y(y)$,定义$M=\max(X,Y)$,$N=\min(X,Y)$,则$M$的分布函数为$F_M(z) = F_X(z)F_Y(z)$,$N$的分布函数为$F_N(z) = 1-(1-F_X(z))(1-F_Y(z))$</p>
+</li>
+<li><p>两独立的指数分布随机变量的最小值也服从指数分布,且其参数是两个参数的和.</p>
+</li>
+<li><p>若$X$和$Y$独立,且$X\sim N(\mu_1,\sigma_1^2)$,$Y\sim N(\mu_2,\sigma_2^2)$,则$X+Y\sim N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)$</p>
+</li>
+</ul>
+<h1 id="第四章-随机变量的数字特征"><a href="#第四章-随机变量的数字特征" class="headerlink" title="第四章 随机变量的数字特征"></a>第四章 随机变量的数字特征</h1><h2 id="1-数学期望"><a href="#1-数学期望" class="headerlink" title="1. 数学期望"></a>1. 数学期望</h2><ul>
+<li><p>定义: 设离散型随机变量$X$的分布率为$P(X=x_i),i = 1,2…$,若级数$\sum\limits_{i=1}^{+\infty}|x_i|p_i$收敛,则称$\sum\limits_{i=1}^{+\infty}|x_i|p_i$为$X$的数学期望,记为$EX$,即<br>$$<br>EX=\sum\limits_{i=1}^{+\infty}x_ip_i<br>$$</p>
+</li>
+<li><p>定义: 设连续型随机变量$X$的密度为$p(x)$,若积分$\int_{-\infty}^{+\infty}|x|p(x)dx&lt;\infty$,则定义$X$的数学期望$EX$为<br>$$<br>EX=\int_{-\infty}^{+\infty}xp(x)dx<br>$$</p>
+</li>
+</ul>
+<h3 id="常见分布的数学期望"><a href="#常见分布的数学期望" class="headerlink" title="常见分布的数学期望"></a>常见分布的数学期望</h3><ol>
+<li><p>0-1分布(两点分布)$B(p)$</p>
+<p>设随机变量$X$服从0-1分布:<br>$$<br>X\sim\left(\begin{matrix}<br>0&amp;1\\<br>q&amp;p<br>\end{matrix}\right)<br>, 0&lt;p&lt;1,;p+q=1<br>$$<br>则$EX = 0\cdot q+1\cdot p = p$.</p>
+<p>$D(X) = pq​$</p>
+</li>
+</ol>
+<ol start="2">
+<li><p>二项分布$B(n,p),0&lt;p&lt;1$</p>
+<p>设随机变量$X$服从二项分布:<br>$$<br>P(X=k) = C_n^kp^k(1-p)^{n-k},\quad k = 0,1,2,…n<br>$$<br>则$X$的数学期望存在,且<br>$$<br>EX = \sum\limits_{k=0}^nkC_n^kp^k(1-p)^{n-k} = \sum\limits_{k=1}^n\frac{k\cdot n!}{k!(n-k)!}p^k(1-p)^{n-k} \\= np\sum\limits_{k=1}^n\frac{(n-1)!}{(k-1)!(n-1)!}p^{k-1}(1-p)^{(n-1)-(k-1)} = np<br>$$</p>
+</li>
+</ol>
+<p>   $$<br>   D(x) = npq<br>   $$</p>
+<ol start="3">
+<li><p>泊松分布$P(\lambda)$</p>
+<p>设随机变量$X$服从参数为$\lambda$的泊松分布,$\lambda&gt;0$:</p>
+</li>
+</ol>
+<p>$$<br>P(X=k) = \frac{\lambda^k}{k!}e^{-\lambda},\quad k = 0,1…<br>$$<br>​    则$X$的数学期望存在,其值为<br>$$<br>EX = \sum\limits_{k=0}^{+\infty} kP(X=k) = \sum\limits_{k=1}^{+\infty}k\frac{\lambda^k}{k!}e^{-\lambda} = \lambda\sum\limits_{k=0}^{+\infty}\frac{\lambda^k}{k!}e^{-\lambda} = \lambda<br>$$</p>
+<p>$$<br>D(X) = \lambda<br>$$</p>
+<ol start="4">
+<li><p>均匀分布$U[a,b],-\infty &lt; a&lt; b &lt; +\infty$<br>$$<br>EX =\frac{a+b}{2}<br>$$</p>
+<p>$$<br>D(X) = \frac{(b-a)^2}{12}<br>$$</p>
+</li>
+</ol>
+<ol start="5">
+<li><p>指数分布$e(\lambda),\lambda&gt;0$</p>
+<p>设随机变量$X$服从指数分布,其密度函数为<br>$$<br>p(x) = \lambda e^{-\lambda x},\quad x&gt;0<br>$$<br>则$X$的数学期望存在,且<br>$$<br>EX = \int_{-\infty}^{+\infty}xp(x)dx = \frac{1}{\lambda}<br>$$</p>
+<p>$$<br>D(X) = \lambda^{-2}<br>$$</p>
+</li>
+<li><p>$\Gamma$分布$G(\lambda,r),\lambda,r&gt;0$</p>
+<p>设随机变量$X$服从参数为$\lambda ,r$的$\Gamma$分布,则其密度函数为<br>$$<br>p(x) = \frac{\lambda^r}{\Gamma(r)}x^{r-1}e^{-\lambda x},\quad x\geq 0<br>$$<br>$X$的数学期望存在,且<br>$$<br>EX = \int_{-\infty}^{+\infty}xp(x)dx=\int_0^{+\infty} \frac{x\lambda^r}{\Gamma(r)}x^{r-1}e^{-\lambda x}dx = \frac{r}{\lambda}\int_0^{+\infty}\frac{\lambda^{r+1}}{\Gamma(r+1)}x^re^{-\lambda x}dx = \frac{r}{\lambda}<br>$$</p>
+<p>$$<br>D(X) = r\lambda^{-2}<br>$$</p>
+</li>
+<li><p>正态分布$N(\mu,\sigma^2),\mu\in R,\sigma&gt;0$<br>$$<br>EX = \mu<br>$$</p>
+<p>$$<br>D(X) = \sigma^2<br>$$</p>
+</li>
+</ol>
+<h3 id="随机变量函数的数学期望"><a href="#随机变量函数的数学期望" class="headerlink" title="随机变量函数的数学期望"></a>随机变量函数的数学期望</h3><ul>
+<li><p>若随机变量$X$的函数$Y=g(x)$也是一个随机变量,设$g(x)$的数学期望存在,则下面的结论成立.</p>
+<ul>
+<li><p>若$X$为离散型随机变量,其分布率为$P(X=x_k)=p_k,;k = 1,2,…$,则$Y$的数学期望为<br>$$<br>EY = E[g(x)] = \sum_{k=1}^{+\infty}g(x_k)P(X=x_k) = \sum_{k=1}^{+\infty}g(x_k)p_k<br>$$</p>
+</li>
+<li><p>若$X$为连续型随机变量,其密度为$p(x)$,则<br>$$<br>EY = E[g(x)] = \int_{-\infty}^{+\infty}g(x)p_xdx<br>$$</p>
+</li>
+</ul>
+</li>
+<li><p>设随机向量$(X,Y)$的函数$Z=g(X,Y)$是一个随机变量,且期望存在,则下面的结论成立.</p>
+<ul>
+<li><p>若$(X,Y)$是一个离散型的随机向量,其联合分布率为$P(X=x_i,Y=y_j) = p_{ij},;i,j = 1,2…$</p>
+<p>则<br>$$<br>EZ = E[g(X,Y)]=\sum\limits_{i = 1}^{+\infty}\sum\limits_{j=1}^{+\infty}g(x_i,y_j)p_{ij}<br>$$</p>
+</li>
+<li><p>若$(X,Y)$为连续型随机向量,其联合密度为$p(x,y)$,则<br>$$<br>EZ = E[g(X,Y)]=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}g(x,y)p(x,y)dxdy<br>$$</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="数学期望的性质"><a href="#数学期望的性质" class="headerlink" title="数学期望的性质"></a>数学期望的性质</h3><ul>
+<li><p>对常数$a,b$,若$a\leq x\leq b$,则$a\leq EX\leq b$</p>
+</li>
+<li><p>线性性质:<br>$$<br>E(c_1X_1+c_2X_2+c_3X_3+…+c_nX_n) = c_1EX_1+c_2EX_2+…+c_nEX_n<br>$$</p>
+</li>
+<li><p>若$X,Y$相互独立,则$E[XY] = EX\cdot EY$.若$X_1,X_2,…,X_n$相互独立,则<br>$$<br>E(X_1X_2…X_n) = EX_1EX_2…EX_n<br>$$</p>
+</li>
+</ul>
+<h2 id="2-方差与矩"><a href="#2-方差与矩" class="headerlink" title="2. 方差与矩"></a>2. 方差与矩</h2><ul>
+<li>若$EX^2&lt;+\infty$,则称$E(X-EX)^2$为随机变量$X$的方差,记为$D(X)$或$Var(X)$,即$D(X) = E(X-EX)^2$.而称$\sigma(X) = \sqrt{D(X)}$为$X$的均方差或标准差.</li>
+<li>$D(X) = EX^2-(EX)^2$</li>
+</ul>
+<h3 id="常见分布的方差"><a href="#常见分布的方差" class="headerlink" title="常见分布的方差"></a>常见分布的方差</h3><ul>
+<li>见常见分布的期望</li>
+</ul>
+<h3 id="方差的性质"><a href="#方差的性质" class="headerlink" title="方差的性质"></a>方差的性质</h3><ul>
+<li><p>常数的方差为0;</p>
+</li>
+<li><p>设$a,b$为任意有限常数,$X$的方差存在,则<br>$$<br>D(aX+b) =a^2D(X)<br>$$</p>
+</li>
+<li><p>对任意方差存在的随机变量$X$和$Y$,其和或差的方差任然有限,且<br>$$<br>D(X\pm Y) = D(X)+D(Y)\pm2E[(X-EX)(Y-EY)]<br>$$</p>
+</li>
+<li><p>(切尔雪夫不等式)设随机变量$X$的期望$EX$和方差$DX$均存在,则任意的$\epsilon&gt;0$<br>$$<br>P(|X-EX|\geq\epsilon)\leq\frac{DX}{\epsilon^2}<br>$$</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/概率论/" rel="tag"><i class="fa fa-tag"></i> 概率论</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/03/深入理解计算机系统/" rel="next" title="深入理解计算机系统学习笔记">
+                <i class="fa fa-chevron-left"></i> 深入理解计算机系统学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/03/数电实验/" rel="prev" title="数字电路实验">
+                数字电路实验 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/img.JPG" alt="Marukohe">
+            
+              <p class="site-author-name" itemprop="name">Marukohe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Marukohe" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1502449818@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章-随机事件与概率"><span class="nav-number">1.</span> <span class="nav-text">第一章 随机事件与概率</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-随机事件及其运算"><span class="nav-number">1.1.</span> <span class="nav-text">1. 随机事件及其运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#随机试验-样本空间-随机事件"><span class="nav-number">1.1.1.</span> <span class="nav-text">随机试验 样本空间 随机事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件的关系与运算"><span class="nav-number">1.1.2.</span> <span class="nav-text">事件的关系与运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关系"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">运算</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-事件的概率及性质"><span class="nav-number">1.2.</span> <span class="nav-text">2. 事件的概率及性质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#频率的定义和性质"><span class="nav-number">1.2.1.</span> <span class="nav-text">频率的定义和性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概率的定义"><span class="nav-number">1.2.2.</span> <span class="nav-text">概率的定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-等可能概率（古典概型）"><span class="nav-number">1.3.</span> <span class="nav-text">3. 等可能概率（古典概型）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-几何概率"><span class="nav-number">1.4.</span> <span class="nav-text">4. 几何概率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-条件概率"><span class="nav-number">1.5.</span> <span class="nav-text">5. 条件概率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#条件概率"><span class="nav-number">1.5.1.</span> <span class="nav-text">条件概率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件概率的性质"><span class="nav-number">1.5.2.</span> <span class="nav-text">条件概率的性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件概率的计算"><span class="nav-number">1.5.3.</span> <span class="nav-text">条件概率的计算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#全概率公式"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">全概率公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#贝叶斯公式"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">贝叶斯公式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-独立性"><span class="nav-number">1.6.</span> <span class="nav-text">6. 独立性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-独立重复试验"><span class="nav-number">1.7.</span> <span class="nav-text">7. 独立重复试验</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章-随机变量及其分布"><span class="nav-number">2.</span> <span class="nav-text">第二章 随机变量及其分布</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-随机变量"><span class="nav-number">2.1.</span> <span class="nav-text">1. 随机变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-离散型随机变量及其分布律"><span class="nav-number">2.2.</span> <span class="nav-text">2. 离散型随机变量及其分布律</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#离散型随机变量的分布律与性质"><span class="nav-number">2.2.1.</span> <span class="nav-text">离散型随机变量的分布律与性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用离散型随机变量"><span class="nav-number">2.2.2.</span> <span class="nav-text">常用离散型随机变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-0-1分布或两点分布"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">(1) 0-1分布或两点分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-二项分布"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">(2) 二项分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-泊松分布"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">(3) 泊松分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-几何分布"><span class="nav-number">2.2.2.4.</span> <span class="nav-text">(4) 几何分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-超几何分布"><span class="nav-number">2.2.2.5.</span> <span class="nav-text">(5) 超几何分布</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-随机变量的分布函数"><span class="nav-number">2.3.</span> <span class="nav-text">3. 随机变量的分布函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-连续型随机变量"><span class="nav-number">2.4.</span> <span class="nav-text">4. 连续型随机变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见连续型随机变量的分布"><span class="nav-number">2.4.1.</span> <span class="nav-text">常见连续型随机变量的分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-均匀分布"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">1. 均匀分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-指数分布"><span class="nav-number">2.4.1.2.</span> <span class="nav-text">2. 指数分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-正态分布"><span class="nav-number">2.4.1.3.</span> <span class="nav-text">3. 正态分布</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#５-随机变量函数的分布"><span class="nav-number">2.5.</span> <span class="nav-text">５.随机变量函数的分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一．离散型随机变量的函数"><span class="nav-number">2.5.1.</span> <span class="nav-text">一．离散型随机变量的函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二．连续型随机变量函数的分布"><span class="nav-number">2.5.2.</span> <span class="nav-text">二．连续型随机变量函数的分布</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三章-随机向量及其分布"><span class="nav-number">3.</span> <span class="nav-text">第三章 随机向量及其分布</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-二维随机变量及其分布函数"><span class="nav-number">3.1.</span> <span class="nav-text">1. 二维随机变量及其分布函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-二维离散型随机向量"><span class="nav-number">3.1.1.</span> <span class="nav-text">一. 二维离散型随机向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-二维连续型随机向量"><span class="nav-number">3.1.2.</span> <span class="nav-text">二. 二维连续型随机向量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-条件分布"><span class="nav-number">3.2.</span> <span class="nav-text">2. 条件分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-离散型随机向量的条件概率分布"><span class="nav-number">3.2.1.</span> <span class="nav-text">一. 离散型随机向量的条件概率分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-连续型随机向量的条件概率"><span class="nav-number">3.2.2.</span> <span class="nav-text">二. 连续型随机向量的条件概率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-随机变量的独立性"><span class="nav-number">3.3.</span> <span class="nav-text">3. 随机变量的独立性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-二维随机向量函数的分布"><span class="nav-number">3.4.</span> <span class="nav-text">4. 二维随机向量函数的分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-二维离散型随机向量函数的分布"><span class="nav-number">3.4.1.</span> <span class="nav-text">一. 二维离散型随机向量函数的分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-二维连续型随机向量函数的分布"><span class="nav-number">3.4.2.</span> <span class="nav-text">二. 二维连续型随机向量函数的分布</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第四章-随机变量的数字特征"><span class="nav-number">4.</span> <span class="nav-text">第四章 随机变量的数字特征</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-数学期望"><span class="nav-number">4.1.</span> <span class="nav-text">1. 数学期望</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见分布的数学期望"><span class="nav-number">4.1.1.</span> <span class="nav-text">常见分布的数学期望</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机变量函数的数学期望"><span class="nav-number">4.1.2.</span> <span class="nav-text">随机变量函数的数学期望</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数学期望的性质"><span class="nav-number">4.1.3.</span> <span class="nav-text">数学期望的性质</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-方差与矩"><span class="nav-number">4.2.</span> <span class="nav-text">2. 方差与矩</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见分布的方差"><span class="nav-number">4.2.1.</span> <span class="nav-text">常见分布的方差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方差的性质"><span class="nav-number">4.2.2.</span> <span class="nav-text">方差的性质</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marukohe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  访问量:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Gw6SuInwfIlhXsnp9cQU216e-gzGzoHsz',
+        appKey: '20X1ggdp2ujxNW9OAxOn0Yhm',
+        placeholder: 'o((>ω< ))o来造作啊',
+        avatar:'mp',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

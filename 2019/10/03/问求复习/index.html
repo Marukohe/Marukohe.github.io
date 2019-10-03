@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("https://marukohe.github.io/"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="3.1动态规划">
+<meta name="keywords" content="cs learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="问求复习">
+<meta property="og:url" content="https://marukohe.github.io/2019/10/03/问求复习/index.html">
+<meta property="og:site_name" content="Maruko&#39;s blog">
+<meta property="og:description" content="3.1动态规划">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-08T15:14:13.985Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="问求复习">
+<meta name="twitter:description" content="3.1动态规划">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://marukohe.github.io/2019/10/03/问求复习/">
+
+
+
+
+
+  <title>问求复习 | Maruko's blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Maruko's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">写不完的作业，看不懂的汇编</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-users"></i> <br>
+            
+            友链
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://marukohe.github.io/2019/10/03/问求复习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marukohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/img.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maruko's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">问求复习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-03T14:43:46+08:00">
+                2019-10-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/03/问求复习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/03/问求复习/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="3-1动态规划"><a href="#3-1动态规划" class="headerlink" title="3.1动态规划"></a>3.1动态规划</h2><a id="more"></a>
+<h2 id="3-3图的基本概念"><a href="#3-3图的基本概念" class="headerlink" title="3.3图的基本概念"></a>3.3图的基本概念</h2><ul>
+<li><p>迹：边不重复</p>
+</li>
+<li><p>路：点不重复</p>
+</li>
+<li><p>定理1.8：设$G$是一个阶至少为3的图。若$G$包含至少两个不同的顶点$u$和$v$，使得$G-u$与$G-v$是连通的，则$G$是连通的。</p>
+</li>
+<li><p>测地线：长度为$d(u,v)$的$u-v$路称为$u-v$的测地线</p>
+</li>
+<li><p>完全图：任何两个不同的顶点都是邻接的，记为$K_n$</p>
+</li>
+<li><p>图论第一定理：若图$G$的边数为$m$，则<br>$$<br>\sum\limits_{v\in V(G)}deg,v = 2m<br>$$</p>
+</li>
+</ul>
+<ul>
+<li>立方图：3正则图</li>
+<li>定理2.10：由非负整数构成的非增序列$s: d_1,d_2,…,d_n(n\geq2,d_1\geq 1)$是可图的当且仅当序列</li>
+</ul>
+<p>$$<br>s_1:d_2-1,d_3-1,…,d_{d_1+1}-1,…,d_n是可图的<br>$$</p>
+<ul>
+<li>同构图：若两个图仅仅区别在画法或者顶点的标号上，则称它们是同构的。</li>
+<li>自补的：若一个图和它的补图同构，则称这个图是自补的。</li>
+</ul>
+<h2 id="3-4用于动态等价关系的数据结构"><a href="#3-4用于动态等价关系的数据结构" class="headerlink" title="3.4用于动态等价关系的数据结构"></a>3.4用于动态等价关系的数据结构</h2><ul>
+<li>$MAKE_SET(x)$</li>
+<li>$UNION_SET(x)$</li>
+<li>$FIND_SET(x)$</li>
+<li>链表表示：<ul>
+<li>每个集合对象包含了$head$属性和$tail$属性</li>
+<li>$head$属性指向表的第一个对象</li>
+<li>$tail$属性指向表的最后一个对象</li>
+<li>链表中的每个对象都包含了一个集合成员、一个指向链表中下一个对象的指针和一个指回到集合对象的指针</li>
+</ul>
+</li>
+<li>定理21.1：只用不想交集合的链表表示和加权合并启发式策略，一个具有$m$个$MAKE_SET、UNION_SET和FIND_SET$操作的序列需要的时间为$O(m+nlgn)$。</li>
+<li>一组$m$个$MAKE_SET、UNION和FIND_SET$操作的序列，其中$n$个是$MAKE_SET$操作，它能在一个不想交集合森林上使用按秩合并于路径压缩在最坏情况时间为$O(m\alpha(n))$内处理完。</li>
+</ul>
+<h2 id="3-5树"><a href="#3-5树" class="headerlink" title="3.5树"></a>3.5树</h2><ul>
+<li>树：无圈的连通图</li>
+<li>$Kruskal$算法：在剩下的边中选择权值最小的边，且不与已选的边构成圈</li>
+<li>$Prime$算法：在剩下的边中，选择一条与已选的边有关联的权值最小的边</li>
+<li>具有指定顶点集的$n$阶不同树的个数是$n^{n-2}$</li>
+</ul>
+<h2 id="3-6图的计算机表示以及遍历"><a href="#3-6图的计算机表示以及遍历" class="headerlink" title="3.6图的计算机表示以及遍历"></a>3.6图的计算机表示以及遍历</h2><ul>
+<li>白色路径定理：在有向或无向图$G=(V,E)$的深度优先搜索森林中，结点$v$是结点$u$的后代当且仅当在发现结点$u$的时间$u.d$，存在一条从结点$u$到结点$v$的全部由白色结点所构成的路径。</li>
+<li><strong>树边</strong>：为深度优先森林$G_\pi$中的边。如果结点$v$是因算法对$(u,v)$的探索而说先被发现，则$(u,v)$是一条树边。</li>
+<li><strong>后向边</strong>：后向边$(u,v)$是将结点$u$连接到其在深度优先树中(一个)祖先结点$v$的边。由于有向图中可以有自循环，自循环也被认为是后向边。</li>
+<li><strong>前向边</strong>：是将结点$u$连接到其在深度优先森林中的一个后代结点$v$的边$(u,v)$。</li>
+<li><strong>横向边</strong>：指其他所有的边。这些边可以连接同一棵深度优先树中的结点，只要其中一个结点不是另外一个结点的祖先，也可以连接不同深度优先树中的两个结点。</li>
+</ul>
+<h2 id="3-7单源最短路"><a href="#3-7单源最短路" class="headerlink" title="3.7单源最短路"></a>3.7单源最短路</h2><ul>
+<li>最短路径和松弛操作的性质:<ul>
+<li>三角不等式性质：对于任何边$(u,v)\in E$,我们有$\delta(s,v)\leq\delta(s,u)+w(u,v)$。</li>
+<li>上界性质：对于所有的结点$v\in V$，我们总是有$v.d\geq\delta(s,v)$，一旦$v.d$的取值达到$\delta(s,v)$，其值将不再发生变化。</li>
+<li>收敛性质：对于某县结点$u,v\in V$，如果$s$到$u$到$v$是图$G$中的一条最短路径，并且在对边$(u,v)$进行松弛前任意时间有$u.d=\delta(s,u)$，则在这之后的所有时间有$v.d=\delta(s,v)$。</li>
+<li>路径松驰性质：松弛顺序</li>
+<li>前驱子图性质：对于所有的结点$v\in V$，一旦$v.d=\delta(s,v)$，则前驱子图是一棵根节点为$s$的最短路径树。</li>
+</ul>
+</li>
+<li>$Bellman-Ford$算法解决的是一般情况下的单源最短路径问题，在这里，边的权重可以为负值。</li>
+<li>$Dijkstra$算法解决的是带权重的有向图上单源最短路径问题。</li>
+<li>通过$Dijkstra$算法生成的最短路径树满足，所有的前驱不为$NIL$的结点满足$v.d=v.\pi.d+w(v.\pi,v)$，前驱为$NIL$的结点不包括$s$满足$v.d=\infin$,$s$结点满足$s.d=0,s.\pi=NIL$。</li>
+</ul>
+<h2 id="3-8多源最短路"><a href="#3-8多源最短路" class="headerlink" title="3.8多源最短路"></a>3.8多源最短路</h2><h2 id="3-9图的连通度"><a href="#3-9图的连通度" class="headerlink" title="3.9图的连通度"></a>3.9图的连通度</h2><ul>
+<li>设$G$是一个阶至少为3的连通图，若$G$包含一条割边，则$G$一定包含一个割点。</li>
+<li>顶点$v$是连通图$G$的一个割点当且仅当存在与$v$不同的两个顶点$u$和$w$，使得$v$位于$G$的任意一条$u-w$路上。</li>
+<li>设$G$是非平凡的连通图，$u\in V(G)$。若$v$是$G$中距离$u$最远的任一顶点，则$v$不是$G$的割点。</li>
+<li><strong>不可分图</strong>：不含割点的非平凡联通图。</li>
+<li>阶至少为3的图是不可分的当且仅当任意两个顶点都位于某个圈上。</li>
+<li>若图$G$的一个不可分子图不是其他任一不可分子图的真子图，则称该子图是$G$的一个<strong>块</strong>。</li>
+<li>对于非完全图$G$，$G$的最小顶点割的基数称为是$G$的点连通度，简称$G$的<strong>连通度</strong>，记作$\kappa(G)$。</li>
+<li>对于非负整数$k$，图$G$称为是$k$连通的，若$\kappa(G)\geq k$。</li>
+<li>设$X$是非平凡图$G$的若干边构成的集合，若$G-X$是不连通的，则称$X$是$G$的一个边割。连通图$G$的边割$X$称为是极小的，若$X$的任一真子集都不是$G$的边割。</li>
+<li>具有最小基数的边割称为是<strong>最小边割</strong>。</li>
+<li>非平凡图$G$的边连通度$\lambda(G)$定义为$G$的一个最小边割的基数。</li>
+<li>对于任意图$G$，</li>
+</ul>
+<p>$$<br>\kappa(G)\leq \lambda(G)\leq\delta(G)<br>$$</p>
+<ul>
+<li>若$G$是一个立方图，则$\kappa(G)=\lambda(G)$。</li>
+<li>若$G$是一个阶为$n$且边数为$m(m\geq n-1)$的图，则</li>
+</ul>
+<p>$$<br>\kappa(G)\leq\lfloor\frac{2m}{n}\rfloor<br>$$</p>
+<ul>
+<li>设$S$是图$G$的顶点集的一个子集，$u$和$v$是$G$的两个顶点。若$G-S$是不连通的，且$u$和$v$属于$G-S$的不同的连通分支，则称$S$分离$u$和$v$。集合$S$称为是一个$u-v$分离集。</li>
+<li><code>Menger</code>定理：设$u$和$v$是图$G$的不邻接的两个顶点，则$u-v$分离集中顶点的最小个数等于$G$中内部不相交$u-v$路的最大个数。</li>
+<li>一个非平凡图$G$是$k(k\geq 2)$连通的当且仅当对于$G$的任意两个顶点$u,v$，$G$至少有$k$条内部不相交的$u-v$路。</li>
+<li>设$G$为$k$连通图，$S$是由$G$中任意$k$个顶点构成的集合。若图$H$是由$G$通过添加一个新的顶点$w$以及连接$w$到$S$中的所有的顶点所得，则$H$也是$k$连通的。</li>
+<li>若$G$为$k$连通图，$u,v_1,v_2,…,v_k$是$G$中$k+1$个不同顶点，则$G$有内部不相交的$u-v_i$路$(1\leq i\leq k)$。</li>
+<li>若$G$为$k$连通图$(k\geq 2)$，则$G$中任意$k$个顶点均位于某一个圈上。</li>
+<li>对于图$G$两个不同的顶点$u$和$v$，$G$中分离$u,v$的边的最小个数等于$G$中不相交的$u-v$路的最大个数。</li>
+<li>一个非平凡图$G$是$k$边连通的当且仅当对于$G$中任意两个不同的顶点$u,v$，$G$中包含$k$条边不相交的$u-v$路。</li>
+</ul>
+<h2 id="3-10旅行问题"><a href="#3-10旅行问题" class="headerlink" title="3.10旅行问题"></a>3.10旅行问题</h2><ul>
+<li>图$G$的一条回路$C$称为是$Euler$回路，如果$C$包含了$G$的每一条边。</li>
+<li>对于一个连通图$G$,含有$G$的每条边的开迹称为是$Euler$迹。</li>
+<li>一个连通图$G$含有一条$Euler$迹当且仅当$G$恰有两个度为奇数的顶点。而且，$G$的每一条$Euler$迹始于一个度为奇数的顶点而终止于另一个度为奇数的顶点。</li>
+<li>一个含图$G$的每个顶点的圈称为是$G$的一个$Hamilton$圈。</li>
+<li>如果$G$是一个$Hamilton$图，则对$G$顶点的任一个非空真子集$S$，都有</li>
+</ul>
+<p>$$<br>k(G-S)\leq |S|<br>$$</p>
+<ul>
+<li>设$G$为一个图，如果对$V(G)$的某个非空真子集$S$，有$k(G-S)&gt;|S|$，则$G$不是$Hamilton$的。</li>
+<li>如果图$G$含有一个割点，则$G$不是$Hamilton$的。</li>
+<li>设$G$为一个$n(n\geq3)$阶的图，如果对于$G$的每对不邻接的顶点$u,v$有</li>
+</ul>
+<p>$$<br>deg;u+deg;v\geq n<br>$$</p>
+<p>​    则$G$是$Hamilton$的。</p>
+<ul>
+<li>设$u$和$v$是一个$n$阶图$G$的两个不邻接的顶点，并且$deg;u+deg;v\geq n$，则$G+uv$是$Hamilton$的当且仅当$G$是$Hamilton$的。</li>
+<li>一个图是$Hamilton$的当且仅当它的闭包是$Hamilton$的。</li>
+<li>设$G$是一个$n(\geq3)$阶的图，如果对于每个整数$j(1\leq j&lt;\frac{n}{2})$，$G$中度至多为$j$的顶点数小于$j$，则$G$是$Hamilton$的。</li>
+</ul>
+<h2 id="3-11图中的匹配和覆盖"><a href="#3-11图中的匹配和覆盖" class="headerlink" title="3.11图中的匹配和覆盖"></a>3.11图中的匹配和覆盖</h2><ul>
+<li>部集$U$称为是友好的，若对于$U$的任意非空子集$X$，均有$|N(X)\geq|X|$。</li>
+<li>设$G$为二部图，其部集为$U$和$W$，且$r\leq|U|\leq|W|$。则$G$包含一个基数为$r$的匹配当且仅当$U$是友好的。</li>
+<li><strong>互异代表元系</strong>：设$S_1,S_2,…,S_n$为非空有限集合，若存在$n$个不同的元素$x_1,x_2,…,x_n$，使得$x_i\in S_i$，则称该集族有一个互异代表元系。</li>
+<li>非空有限集族有一个互异代表元系，当且仅当对于任意$k(1\leq k\leq n)$，集族中任意$k$个集合的并至少包含$k$个元素。</li>
+<li>$\alpha(G)+\beta(G)=n$。</li>
+<li>$\alpha’(G)+\beta’(G)=n$</li>
+<li>A  1-regular spanning subgraph  of $G$ is also called a <strong>a-factor</strong> of $G$.</li>
+<li>Theorem 8.10: A graph $G$ contains a 1-factor if and only if $k_0(G-S)\leq|S|$ for every proper subset of $V(G)$. （$k_0$）为奇连通分支个数。</li>
+<li>Theorem 8.11(Petersen’s Theorem): Every 3-regular bridgeless graph contains a 1-factor.</li>
+<li>Theorem 8.12: Every 3-regular graph with at most two bridges contains a 1-factor.</li>
+<li>A graph $G$ is said to be <strong>1-factorable</strong> if there exist 1-factors $F_1,F_2,…,F_r$ of $G$ such that ${E(F_1),E(F_2),…,E(F_r)}$ is a partition of $E(G)$. We then said that $G$ is <strong>factored</strong> into the 1-factors $F_1,F_2,…,F_r$, which form a <strong>a-factorization</strong> of $G$.</li>
+<li>Theorem 8.13: The Petersen graph is not 1-factorable.</li>
+<li>Theorem 8.14: For each positive interge $k$, the complete graph $K_{2k}$ is 1-factorable.</li>
+<li>Theorem 8.17: For every  interge $k\geq 1$, the complete graph $K_{2k+1}$ is Hamiltonian-factorable.</li>
+<li>Theorem 818: The graph $K_9$ is also $3K_3-$factorable.</li>
+<li>Theorem 8.19: A Kirkman tripe system of order $n\geq3​$ exists if and only if $n\equiv3(mod,6)​$</li>
+<li>Theorem 8.20: For every integer $k\geq1$, the complete graph $K_{2k}$ can be factored into k-1 Hamiltonian cycles and a 1-factor.</li>
+</ul>
+<h2 id="3-12最大流算法"><a href="#3-12最大流算法" class="headerlink" title="3.12最大流算法"></a>3.12最大流算法</h2><p><a href="https://mengzelev.github.io/2018/12/05/clrs-26Maximum-Flow/" target="_blank" rel="noopener">萌捷列夫笔记</a></p>
+<h2 id="3-13平面图与图着色"><a href="#3-13平面图与图着色" class="headerlink" title="3.13平面图与图着色"></a>3.13平面图与图着色</h2><p><a href="https://mengzelev.github.io/2018/12/13/planar-graph-and-coloring/" target="_blank" rel="noopener">萌捷列夫笔记</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/03/Bootstrap Callout/" rel="next" title="Bootstrap Callout的使用">
+                <i class="fa fa-chevron-left"></i> Bootstrap Callout的使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/03/深入理解计算机系统/" rel="prev" title="深入理解计算机系统学习笔记">
+                深入理解计算机系统学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/img.JPG" alt="Marukohe">
+            
+              <p class="site-author-name" itemprop="name">Marukohe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Marukohe" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1502449818@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1动态规划"><span class="nav-number">1.</span> <span class="nav-text">3.1动态规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3图的基本概念"><span class="nav-number">2.</span> <span class="nav-text">3.3图的基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4用于动态等价关系的数据结构"><span class="nav-number">3.</span> <span class="nav-text">3.4用于动态等价关系的数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5树"><span class="nav-number">4.</span> <span class="nav-text">3.5树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6图的计算机表示以及遍历"><span class="nav-number">5.</span> <span class="nav-text">3.6图的计算机表示以及遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-7单源最短路"><span class="nav-number">6.</span> <span class="nav-text">3.7单源最短路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-8多源最短路"><span class="nav-number">7.</span> <span class="nav-text">3.8多源最短路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-9图的连通度"><span class="nav-number">8.</span> <span class="nav-text">3.9图的连通度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-10旅行问题"><span class="nav-number">9.</span> <span class="nav-text">3.10旅行问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-11图中的匹配和覆盖"><span class="nav-number">10.</span> <span class="nav-text">3.11图中的匹配和覆盖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-12最大流算法"><span class="nav-number">11.</span> <span class="nav-text">3.12最大流算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-13平面图与图着色"><span class="nav-number">12.</span> <span class="nav-text">3.13平面图与图着色</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marukohe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  访问量:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Gw6SuInwfIlhXsnp9cQU216e-gzGzoHsz',
+        appKey: '20X1ggdp2ujxNW9OAxOn0Yhm',
+        placeholder: 'o((>ω< ))o来造作啊',
+        avatar:'mp',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("https://marukohe.github.io/"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="问求,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="概念太多，做个整理，前面的以后再补吧。">
+<meta name="keywords" content="问求">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图论">
+<meta property="og:url" content="https://marukohe.github.io/2019/10/03/图论/index.html">
+<meta property="og:site_name" content="Maruko&#39;s blog">
+<meta property="og:description" content="概念太多，做个整理，前面的以后再补吧。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-08T12:33:05.202Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图论">
+<meta name="twitter:description" content="概念太多，做个整理，前面的以后再补吧。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://marukohe.github.io/2019/10/03/图论/">
+
+
+
+
+
+  <title>图论 | Maruko's blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Maruko's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">写不完的作业，看不懂的汇编</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-users"></i> <br>
+            
+            友链
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://marukohe.github.io/2019/10/03/图论/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marukohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/img.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maruko's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">图论</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-03T14:43:46+08:00">
+                2019-10-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/03/图论/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/03/图论/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>概念太多，做个整理，前面的以后再补吧。</p>
+<a id="more"></a>
+
+<h1 id="第1章-引言"><a href="#第1章-引言" class="headerlink" title="第1章 引言"></a>第1章 引言</h1><h1 id="第2章-度"><a href="#第2章-度" class="headerlink" title="第2章 度"></a>第2章 度</h1><h2 id="图与矩阵"><a href="#图与矩阵" class="headerlink" title="图与矩阵"></a>图与矩阵</h2><ol>
+<li>设$G$是一个阶为$n$，边数为$m$的图，其中$V(G)=\{v_1,v_2,…,v_n\}$，$E(G)=\{e_1,e_2,…,e_n\}$.图$G$的<strong>邻接矩阵</strong>定义为$n\times n$的矩阵$A=[a_{ij}]$，其中</li>
+</ol>
+<p>$$<br>a_{ij}=<br>\begin{cases}<br>1, \quad v_iv_j\in E(G) \\<br>0, \quad 其他情形<br>\end{cases}<br>$$<br>2. 图$G$的<strong>关联矩阵</strong>定义为$n\times n$的矩阵$H=[b_{ij}]$，其中<br>$$<br>b_{ij}=<br>\begin{cases}<br>1, \quad 若v_i与e_j关联 \\<br>0, \quad 其他情形<br>\end{cases}<br>$$</p>
+<h1 id="第3章-同构图"><a href="#第3章-同构图" class="headerlink" title="第3章 同构图"></a>第3章 同构图</h1><h1 id="第4章-树"><a href="#第4章-树" class="headerlink" title="第4章 树"></a>第4章 树</h1><h2 id="割边"><a href="#割边" class="headerlink" title="割边"></a>割边</h2><ul>
+<li>割边：连通图$G$的一条边$e=uv$称为<strong>割边</strong>(bridge)，如果$G-e$是不连通的。</li>
+<li>定理4.1：图$G$的边$e$是割边当且仅当$e$不在$G$的任一个圈上。</li>
+</ul>
+<h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><ul>
+<li><p>树：<strong>树</strong>(tree)是无圈的连通图。</p>
+</li>
+<li><p>双星：恰好包含两个非端点的树称为<strong>双星</strong>，这里两个点必然是邻接的。</p>
+</li>
+<li><p>有根树： 在有些情形下，选择树$T$的一个顶点，并指令它为$T$的<strong>根</strong>，此时$T$就成为一个<strong>有根树</strong>。</p>
+</li>
+<li><p>森林：无圈图成为森林。</p>
+</li>
+<li><p>定理4.2：图$G$是树当且仅当$G$的任何两个顶点都被唯一的路连接。</p>
+</li>
+<li><p>定理4.3：每个非平凡树至少有两个端点。</p>
+</li>
+<li><p>定理4.4：每个$n$阶树的边数是$n-1$。</p>
+</li>
+<li><p>推论4.5：阶位$n$且有$k$个连通分支的每个森林有$n-k$条边。</p>
+</li>
+<li><p>定理4.7：每个$n$阶连通图的边数至少为$n-1$。</p>
+</li>
+<li><p>定理4.8：设$G$是阶为n且边数为$m$的图，若$G$满足如下性质中的任意两个:<br>(1)$G$是连通的，(2)$G$是无圈的，(3)$m=n-1$，则$G$是树。</p>
+</li>
+<li><p>定理4.9：设$T$为$k$阶树，若图$G$满足$\delta(G)\geq k-1$，则$T$同构于$G$的某个子图。</p>
+</li>
+</ul>
+<h2 id="最小生成树问题"><a href="#最小生成树问题" class="headerlink" title="最小生成树问题"></a>最小生成树问题</h2><ol>
+<li>定理4.10：每个连通图都含有一个生成树。</li>
+<li>设$G$是连通图，并且对它的每条边都分配一个数值，该数值成为边的<strong>成本</strong>或<strong>权值</strong>。图$G$的边$e$的权值记为$w(e)$。我们把这样的图称为<strong>赋权图</strong>。</li>
+<li><strong>Kruskal算法</strong>：对于一个连通赋权图$G$，$G$的生成树$T$按下述方法构造：对于$T$的第一条边$e_1$，选择$G$的任一权值最小的边；对于$T$的第二条边$e_2$，在$G$剩下的边中选择权值最小的边；对于$T$的第三条边$e_3$，在$G$剩下的边中选择权值最小的边，且不与前面所选的边构成圈。继续这种做法，直至产生一个生成树。</li>
+<li>定理4.11：<strong>Kruskal算法</strong>在连通赋权图中产生一个最小生成树。</li>
+<li><strong>Prim算法</strong>：对于一个连通赋权图$G$，$G$的一个生成树$T$由下述方法构造：对于$G$的任一顶点$u$，选择与$u$关联的且权值最小的边作为$T$的第一条边$e_1$。对于接下来的边$e_2,e_3,…,e_{n-1}$，在与一条已选边只有一个公共顶点的所有边中选择权值最小的边。</li>
+<li>定理4.12：<strong>Prim算法</strong>在连通赋权图中产生一个最小生成树。</li>
+</ol>
+<h2 id="生成树的个数"><a href="#生成树的个数" class="headerlink" title="生成树的个数"></a>生成树的个数</h2><ol>
+<li>定理4.15：(Gayley公式)具有指定顶点集的n阶不同树的个数是$n^{n-2}$</li>
+</ol>
+<h1 id="第五章-连通性"><a href="#第五章-连通性" class="headerlink" title="第五章 连通性"></a>第五章 连通性</h1><h2 id="割点"><a href="#割点" class="headerlink" title="割点"></a>割点</h2><ol>
+<li>定理5.1：设$v$是图$G$中与一条割边相关联的顶点，则$v$是$G$的割点当且仅当$deg v\geq 2$ 。</li>
+<li>推论5.2：设$G$是一个阶至少为3的连通图。若$G$包含一条割边，则$G$一定包含一个割点。</li>
+<li>定理5.3：设$v$是连通图$G$的一个割点，$u$和$w$是$G-v$不同连通分支中的两个顶点，则$v$位于$G$的任意一条$u-w$路上。</li>
+<li>推论5.4：顶点$v$是连通图$G$的一个割点当且仅当存在与$v$不同的两个顶点$u$和$w$，使得$v$位于$G$的任意一条$u-w$路上。</li>
+<li>定理5.5：设$G$是非平凡的连通图，$u\in V(G)$。若$v$是$G$中距离$u$最远的顶点，则$v$不是$G$的割点。</li>
+<li>推论5.6：任意非平凡的连通图至少包含两个非割点的顶点。</li>
+</ol>
+<h2 id="块"><a href="#块" class="headerlink" title="块"></a>块</h2><ol>
+<li><p>不含割点的非平凡连通图称为是<strong>不可分图</strong>。</p>
+</li>
+<li><p>定理5.7：阶至少为3的图是不可分的当且仅当任意两个顶点都位于某个圈上。</p>
+</li>
+<li><p>若图$G$的一个不可分子图不是其他任一不可分子图的真子图，则称该子图是$G$的一个<strong>块</strong>。</p>
+</li>
+<li><p>定理5.8：设$R$是定义在非平凡连通图$G$的边集上的如下关系：对于$e,f\in E(G)$，若$e=f$或$e,f$位于$G$的同一个圈上，则$e,f$有关系$R$，记为$e;R;f$。则$R$是等价关系。</p>
+</li>
+<li><p>推论5.9：非平凡连通图$G$的任意两个不同的块$B_1$和$B_2$具有下面性质：</p>
+<ul>
+<li>$B_1$和$B_2$是边不相交；</li>
+</ul>
+<ul>
+<li><p>$B_1$和$B_2$至多有一个公共顶点；</p>
+</li>
+<li><p>若$B_1$和$B_2$有一个公共顶点$v$，则$v$是$G$的割点。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="连通度"><a href="#连通度" class="headerlink" title="连通度"></a>连通度</h2><ol>
+<li>对于完全图$G$，$G$的最小顶点割的基数称为是$G$的<strong>点连通度</strong>，简称为$G$的<strong>连通度</strong>，用$\kappa(G)$表示。</li>
+<li>$\kappa(K_n)=n-1$</li>
+<li>定理5.11：对于任意图$G$，<br>$\kappa(G)\leq\lambda(G)\leq\delta(G)$  </li>
+<li>定理5.12：若$G$是一个立方图，则$\kappa(G)=\lambda(G)$.</li>
+<li>定理5.13：若$G$是一个阶为$n$且边数为$m(m\geq n-1)$的图，则<br> $\kappa(G)\leq\lfloor\frac{2m}{n}\rfloor$  </li>
+<li>定理5.14：对于任意两个整数$r$和$n(2\leq r&lt;n)$,<br>$\kappa(H_{r,n})=r$  </li>
+</ol>
+<h2 id="Menger定理"><a href="#Menger定理" class="headerlink" title="Menger定理"></a>Menger定理</h2><ol>
+<li>设$S$是图$G$的顶点集的一个子集，$u$和$v$是$G$的两个顶点，若$G-S$是不连通的，且$u$和$v$属于$G-S$的不同连通分支，则称$S$<strong>分离</strong>$u$和$v$。</li>
+<li>定理5.16：设$u$和$v$是图$G$的不邻接的两个顶点，则$u-v$分离集中顶点的最小个数等于$G$中不相交的$u-v$路的最大个数。</li>
+<li>定理5.17：一个非平凡图$G$是$k$联通的$(k\geq2)$当且仅当对于$G$的任意顶点$u,v$，$G$至少有$k$条内部不相交的$u-v$路。</li>
+<li>推论5.18：设$G$为$k$连通图，$S$是由$G$中任意$k$个顶点构成的集合。若图$H$是由$G$通过添加一个新的顶点$w$以及连接$w$到$S$中所有顶点所得，则$H$也是$k$联通的。</li>
+<li>推论5.19：若$G$为$k$连通图，$u,v_1,v_2,…,v_k$为$G$中$k+1$个不同顶点，则$G$有内部不相交的$u-v_i$路$(1\leq i\leq k)$.</li>
+<li>定理5.20：若$G$为$k$连通图$(k\geq 2)$，则$G$中任意$k$个顶点均位于某个圈上。</li>
+<li>定理5.21：对于图$G$的两个不同的顶点$u$和$v$,$G$中分离$u,v$的边的最小个数等于$G$中边不相交$u-v$路的最大个数。</li>
+<li>定理5.22：一个非凡图$G$是$k$边连通的当且仅当对于$G$中任意两个不同的顶点$u,v$,$G$包含$k$条边不相交的$u-v$路。</li>
+</ol>
+<h1 id="第6章-可遍历性"><a href="#第6章-可遍历性" class="headerlink" title="第6章 可遍历性"></a>第6章 可遍历性</h1><h2 id="Euler图"><a href="#Euler图" class="headerlink" title="Euler图"></a>Euler图</h2><ol>
+<li>Trial:a trial is a walk $v_0,v_1,…,v_k$ with no repeated edge.</li>
+<li>图$G$的一条回路称为是<strong>Euler回路</strong>,如果$C$包含$G$的每一条边.</li>
+<li>含有<strong>Euler回路</strong>的图成为是<strong>Euler图</strong>.</li>
+<li>对于一个连通图$G$,含有$G$的每一条边的开迹称为是$Euler$迹.</li>
+<li>定理6.1:一个非平凡图$G$是$Euler$的当且仅当$G$的每个顶点的度都为偶数.</li>
+<li>推论6.2:一个连通图$G$含有一条$Euler$迹当且仅当$G$且有两个度为奇数的定点.而且,$G$的每一条$Euler$迹始于一个度为技术的顶点而终止于另一个度为奇数的顶点.</li>
+<li>设$G$和$H$是两个非平凡图.则$G\times H$是Euler的当且仅当$G$和$H$都是$Euler$的或者$G$和$H$的每个顶点度均为奇数.</li>
+</ol>
+<h2 id="Hamilton图"><a href="#Hamilton图" class="headerlink" title="Hamilton图"></a>Hamilton图</h2><ol>
+<li>一个含图$G$每个定点的圈称为是$G$的一个<strong>Hamilton圈</strong>.</li>
+<li>一个含有<strong>Hamilton圈</strong>的图称为是一个<strong>Hamilton图</strong>.</li>
+<li>定理6.4: $Petersen$图不是$Hamilton$图.</li>
+<li>定理6.5: 如果$G$ 是一个$Hamilton$图,则对$G$顶点的任一个非空子集$S$,都有<br> $k(G-S)\leq|S|$.</li>
+<li>设$G$为一个图,如果对$V(G)$的某个非空真子集$S$,有$k(G-S)&gt;|S|$,则$G$不是$Hamilton$的.</li>
+<li>如果$G$含有一个割点,则$G$不是$Hamilton$的.</li>
+<li>定理6.6:设$G$为一个$n(\geq 3)$阶的图,如果对于$G$的每对不邻接的顶点$u,v$,有<br>​    $degu+degv\geq n$,<br>则$G$是$Hamilton$的.</li>
+<li>推论6.7:设$G$为一个$n\geq 3$阶的图,如果对于$G$中的每个顶点$v$,均有$degv\geq n/2$,则$G$是$Hamilton$的.</li>
+<li>定理6.8: 设$u$和$v$是一个$n$阶图$G$的两个不邻接的顶点,并且$degv+degu\geq n$,则$G+uv$是$Hamilton$的当且仅当$G$是$Hamilton$的.</li>
+<li>定理6.9:一个图是$Hamilton$的当且仅当它的闭包是$Hamilton$的.</li>
+<li>推论6.10:如果$G$是一个阶至少为3的图,且它的闭包$C(G)$是一个完全图,则$G$是一个$Hamilton$图.</li>
+<li>定理6.11:设$G$是一个$n\geq 3$阶的图,如果对于每个整数$j(1\leq j&lt; n/2)$,$G$中度至少为$j$的顶点数小于$j$,则$G$是$Hamilton$的.</li>
+</ol>
+<h2 id="Hamilton链与Hamilton数"><a href="#Hamilton链与Hamilton数" class="headerlink" title="Hamilton链与Hamilton数"></a>Hamilton链与Hamilton数</h2><h1 id="Chapter-8-Matchings-and-Factorization"><a href="#Chapter-8-Matchings-and-Factorization" class="headerlink" title="Chapter 8 Matchings and Factorization"></a>Chapter 8 Matchings and Factorization</h1><h2 id="匹配"><a href="#匹配" class="headerlink" title="匹配"></a>匹配</h2><ol>
+<li><p>独立的: 图中边的集合称为是<strong>独立的</strong>,如该集合中任意两条边不邻接.</p>
+</li>
+<li><p>图$G$中边的一个独立集合成为是$G$的一个<strong>匹配</strong>.</p>
+</li>
+<li><p><strong>邻域</strong>:设$G$为二部图,其部集为$U$和$W$,且$|U|\leq|W|$.对于$U$的非空子集$X$,$X$的<strong>邻域</strong>$N(X)$是指$X$中所有顶点邻域的并.</p>
+</li>
+<li><p>部集$U$称为是<strong>友好的</strong>,若对于$U$的任意非空子集$X$,均有$|N(X)|\geq X$.$(Hall’s condition)$</p>
+</li>
+<li><p>定理8.3: 设$G$为二部图,其部集为$U$和$W$,且$r=|U|\leq|W|$,则$G$包含一个基数为$r$的匹配当且仅当$U$是友好的.(证明)</p>
+</li>
+<li><p>定理8.4: 非空有限集族${S_1,S_2,…,S_n}$有一个互异代表元系当且仅当对于任一整数$k(1\leq k\leq n)$,集族中任意$k$个集合的并至少包含$k$个元素.</p>
+</li>
+<li><p><strong>婚姻定理</strong>: 在一个由$r$个女人和$s$个男人构成的人群中,$1\leq r\leq s$.在熟识的男女之间可能出现$r$对婚姻当且仅当对每个整数$k(1\leq k\leq r)$,任意$k$个女人共认识至少$k$个男人.</p>
+</li>
+<li><p>最大基数的匹配为<strong>最大匹配</strong>.</p>
+</li>
+<li><p>若阶为$2k$的图$G$存在一个基数为$k$的匹配$M$,则称该匹配$M$为<strong>完美匹配</strong>.</p>
+</li>
+<li><p>定理8.6: 任意$r$正则二部图$(r\geq1)$均有一个完美匹配.</p>
+<hr>
+<p>书中英文版竟然差别这么大</p>
+</li>
+<li><p>Theorem 8.7: For every graph $G$ of order $n$ containing no isolated vertices,<br>​$\alpha’(G)+\beta’(G)=n$</p>
+</li>
+<li><p>Theorem 8.8: For every graph $G$ of order $n$ containing no isolated vertices:<br>​$\alpha(G)+\beta(G)=n$</p>
+</li>
+<li><ul>
+<li>$\alpha(G)$  　vertex independence number　maximum number of vertices, no two of which are adjacent</li>
+<li>$\beta(G)$ 　vertex covering number　minimu number of vertices that cover all edges of $G$</li>
+<li>$\alpha’(G)$ 　edge independance number 　maximmum number of edges, no two of which are adjacent</li>
+<li>$\beta’(G)$ 　edge covering number  　 minimum number of edged that cover all vertices of $G$</li>
+</ul>
+</li>
+</ol>
+<h2 id="Factorization"><a href="#Factorization" class="headerlink" title="Factorization"></a>Factorization</h2><ol>
+<li>A  1-regular spanning subgraph  of $G$ is also called a <strong>a-factor</strong> of $G$.</li>
+<li>Theorem 8.10: A graph $G$ contains a 1-factor if and only if $k_0(G-S)\leq|S|$ for every proper subset of $V(G)$.</li>
+<li>Theorem 8.11(Petersen’s Theorem): Every 3-regular bridgeless graph contains a 1-factor.</li>
+<li>Theorem 8.12: Every 3-regular graph with at most two bridges contains a 1-factor.</li>
+<li>A grapgh $G$ is said to be <strong>1-factorable</strong> if there exist 1-factors $F_1,F_2,…,F_r$ of $G$ such that ${E(F_1),E(F_2),…,E(F_r)}$ is a partition of $E(G)$. We then said that $G$ is <strong>factored</strong> into the 1-factors $F_1,F_2,…,F_r$, which form a <strong>a-factorization</strong> of $G$.</li>
+<li>Theorem 8.13: The Petersen graph is not 1-factorable.</li>
+<li>Theorem 8.14: For each positive interge $k$, the complete graph $K_{2k}$ is 1-factorable.</li>
+<li>Theorem 8.17: For every  interge $k\geq 1$, the complete graph $K_{2k+1}$ is Hamiltonian-factorable.</li>
+<li>Theorem 818: The graph $K_9$ is also $3K_3-$factorable.</li>
+<li>Theorem 8.19: A Kirkman tripe system of order $n\geq3$ exists if and only if $n\equiv3(mod,6)$</li>
+<li>Theorem 8.20: For every integer $k\geq1$, the complete graph $K_{2k}$ can be factored into k-1 Hamiltonian cycles and a 1-factor.</li>
+</ol>
+<h1 id="第9章-可平面性"><a href="#第9章-可平面性" class="headerlink" title="第9章 可平面性"></a>第9章 可平面性</h1><h2 id="平面图"><a href="#平面图" class="headerlink" title="平面图"></a>平面图</h2><ol>
+<li>图$G$称为是一个<strong>平面图</strong>如果$G$能够画在一个平面上而使得任何两条边都不会交叉。</li>
+<li>一个图$G$称为是一个<strong>平图</strong>，如果$G$已经画在一个平面上且$G$的任何两条边都不交叉。</li>
+<li>如果$G$是一个至少含有三条边的连通平图，则$G$的每个区域的边界至少含有三条边。</li>
+<li>定理9.1(Euler恒等式)：如果$G$是一个阶位$n$，边数为$m$，且含有$r$个区域的连通平图，则$n-m+r=2$.</li>
+<li>定理9.2：如果$G$是一个阶为$n\geq3$且边数为$m$的平面图，则<pre><code>$m\leq 3n-6$</code></pre></li>
+<li>推论9.3：每个平面图含有一个度小于等于5的顶点。</li>
+<li>推论9.4：完全图$K_5$是非平面的。</li>
+<li>图$G$称为是<strong>极大平面的</strong>，若$G$是平面的，且在$G$的任意两个不邻接的顶点之间添加一条边即可产生一个非平面图。</li>
+<li>定理9.5：图$K_{3,3}$是非平面的。</li>
+<li>定理9.7(Kuratowski定理)：一个图$G$是平面的当且仅当$G$不含$K_5,K_{3,3}$，或者$K_5$或$K_{3,3}$的一个细分作为子图。</li>
+</ol>
+<h2 id="图嵌入到曲面"><a href="#图嵌入到曲面" class="headerlink" title="图嵌入到曲面"></a>图嵌入到曲面</h2><ol>
+<li>定理9.9： 设连通图$G$以2单元嵌入到一个亏格$(k\geq0)$的曲面是上，如果$G$的阶为$n$，边数为$m$，且区域数为$r$，则<br> $n-m+r=2-2k$</li>
+<li>推论9.10： 如果$G$是一个阶为$n$边数为$m$的连通图，嵌入到亏格为$\gamma(G)$的曲面上且形成$r$个区域，则<br> $n-m+r=2-2\gamma(G)$</li>
+<li>推论9.11： 设$G$是一个阶数为$n\geq3$边数为$m$的连通图，则<br> $\gamma(G)\geq \frac{m}{6}-\frac{n}{2}+1$</li>
+<li>定理9.14： 对于每个整数$n\geq 3$<br> $\gamma(k_N)=\lceil \frac{(n-3)(n-4)}{12}\rceil$</li>
+</ol>
+<h1 id="第10章-染色"><a href="#第10章-染色" class="headerlink" title="第10章 染色"></a>第10章 染色</h1><h2 id="顶点染色"><a href="#顶点染色" class="headerlink" title="顶点染色"></a>顶点染色</h2><ol>
+<li>图$G$的一个<strong>真染色</strong>，就是给图$G$的顶点分配一些颜色，使得每个顶点都能分配到一种颜色，且邻接的顶点被染成不同的颜色。</li>
+<li>在$G$的所有染色中，所用的最少颜色数称为$G$的色数,记为$\chi(G)$。</li>
+<li>定理10.1(四色定理)：每个平面图的色素至多是4。</li>
+<li>定理10.2：图$G$的色数是2当且仅当$G$是一个非空的二部图。</li>
+<li>图$G$中的一个<strong>团</strong>是指$G$的一个完全子图。图$G$的最大团的阶数称为是$G$的一个<strong>团数</strong>。</li>
+<li>对每个$n$阶图$G$,<br> $\chi(G)\geq\omega(G),\chi(G)\geq\frac{n}{\beta(G)}$</li>
+<li>定理10.7：对于每个图$G$，<br> $\chi(G)\leq1+\Delta(G)$</li>
+<li>定理10.8：对每个非奇圈也非完全的连通图$G$，<br> $\chi(G)\leq\Delta(G)$</li>
+<li>定理10.9：对每个图$G$，<br> $\chi(G)\leq 1+max{\delta(H)}$</li>
+<li>定理10.10：对于每个整数$k\geq3$，都存在一个色数为$k$的无三角的图。</li>
+</ol>
+<h2 id="边染色"><a href="#边染色" class="headerlink" title="边染色"></a>边染色</h2><ol>
+<li>非空图$G$的一个<strong>边染色</strong>是指给$G$的边分配颜色，每条边分配一种颜色，使得邻接的边分配不同的颜色。</li>
+<li>对$G$的边染色所需的最少的颜色数称为是<strong>边色数</strong>(也成为色指数)，记为$\chi_1(G)$.</li>
+<li>定理10.12(Vizing定理)：对于任一非空图$G$,<br> $\chi_1(G) = \Delta(G)$ 或者 $\chi_1(G) = 1+\Delta(G)$</li>
+<li>定理10.13：设$G$是一个阶为$n$，边数为$m$的图，若<br> $m&gt;\frac{(n-1)\Delta(G)}{2}$<br>则$\chi_1(G) = 1 + \Delta(G)$</li>
+</ol>
+<h2 id="四色问题"><a href="#四色问题" class="headerlink" title="四色问题"></a>四色问题</h2><h1 id="第12章-距离"><a href="#第12章-距离" class="headerlink" title="第12章 距离"></a>第12章 距离</h1><h2 id="图的中心"><a href="#图的中心" class="headerlink" title="图的中心"></a>图的中心</h2><h2 id="远点"><a href="#远点" class="headerlink" title="远点"></a>远点</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/问求/" rel="tag"><i class="fa fa-tag"></i> 问求</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/03/config/" rel="prev" title="To configure my blog">
+                To configure my blog <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/img.JPG" alt="Marukohe">
+            
+              <p class="site-author-name" itemprop="name">Marukohe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Marukohe" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1502449818@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第1章-引言"><span class="nav-number">1.</span> <span class="nav-text">第1章 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第2章-度"><span class="nav-number">2.</span> <span class="nav-text">第2章 度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#图与矩阵"><span class="nav-number">2.1.</span> <span class="nav-text">图与矩阵</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第3章-同构图"><span class="nav-number">3.</span> <span class="nav-text">第3章 同构图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第4章-树"><span class="nav-number">4.</span> <span class="nav-text">第4章 树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#割边"><span class="nav-number">4.1.</span> <span class="nav-text">割边</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树"><span class="nav-number">4.2.</span> <span class="nav-text">树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小生成树问题"><span class="nav-number">4.3.</span> <span class="nav-text">最小生成树问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成树的个数"><span class="nav-number">4.4.</span> <span class="nav-text">生成树的个数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第五章-连通性"><span class="nav-number">5.</span> <span class="nav-text">第五章 连通性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#割点"><span class="nav-number">5.1.</span> <span class="nav-text">割点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#块"><span class="nav-number">5.2.</span> <span class="nav-text">块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连通度"><span class="nav-number">5.3.</span> <span class="nav-text">连通度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Menger定理"><span class="nav-number">5.4.</span> <span class="nav-text">Menger定理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第6章-可遍历性"><span class="nav-number">6.</span> <span class="nav-text">第6章 可遍历性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Euler图"><span class="nav-number">6.1.</span> <span class="nav-text">Euler图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hamilton图"><span class="nav-number">6.2.</span> <span class="nav-text">Hamilton图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hamilton链与Hamilton数"><span class="nav-number">6.3.</span> <span class="nav-text">Hamilton链与Hamilton数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-8-Matchings-and-Factorization"><span class="nav-number">7.</span> <span class="nav-text">Chapter 8 Matchings and Factorization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#匹配"><span class="nav-number">7.1.</span> <span class="nav-text">匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Factorization"><span class="nav-number">7.2.</span> <span class="nav-text">Factorization</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第9章-可平面性"><span class="nav-number">8.</span> <span class="nav-text">第9章 可平面性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#平面图"><span class="nav-number">8.1.</span> <span class="nav-text">平面图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图嵌入到曲面"><span class="nav-number">8.2.</span> <span class="nav-text">图嵌入到曲面</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第10章-染色"><span class="nav-number">9.</span> <span class="nav-text">第10章 染色</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#顶点染色"><span class="nav-number">9.1.</span> <span class="nav-text">顶点染色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边染色"><span class="nav-number">9.2.</span> <span class="nav-text">边染色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四色问题"><span class="nav-number">9.3.</span> <span class="nav-text">四色问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第12章-距离"><span class="nav-number">10.</span> <span class="nav-text">第12章 距离</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#图的中心"><span class="nav-number">10.1.</span> <span class="nav-text">图的中心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远点"><span class="nav-number">10.2.</span> <span class="nav-text">远点</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marukohe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  访问量:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Gw6SuInwfIlhXsnp9cQU216e-gzGzoHsz',
+        appKey: '20X1ggdp2ujxNW9OAxOn0Yhm',
+        placeholder: 'o((>ω< ))o来造作啊',
+        avatar:'mp',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

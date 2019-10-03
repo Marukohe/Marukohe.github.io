@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("https://marukohe.github.io/"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="系统,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第一章 计算机系统漫游信息就是位+上下文 源程序实际上就是由一个值0和1组成的位（又称为比特），8个位被组成一组，称为子节。">
+<meta name="keywords" content="系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解计算机系统学习笔记">
+<meta property="og:url" content="https://marukohe.github.io/2019/10/03/深入理解计算机系统/index.html">
+<meta property="og:site_name" content="Maruko&#39;s blog">
+<meta property="og:description" content="第一章 计算机系统漫游信息就是位+上下文 源程序实际上就是由一个值0和1组成的位（又称为比特），8个位被组成一组，称为子节。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://marukohe.github.io/images/1.png">
+<meta property="og:image" content="https://marukohe.github.io/images/2.png">
+<meta property="og:image" content="https://marukohe.github.io/images/3.png">
+<meta property="og:image" content="https://marukohe.github.io/images/4.png">
+<meta property="og:image" content="https://marukohe.github.io/images/5.png">
+<meta property="og:image" content="https://marukohe.github.io/images/6.png">
+<meta property="og:image" content="https://marukohe.github.io/images/7.png">
+<meta property="og:image" content="https://marukohe.github.io/images/8.png">
+<meta property="og:image" content="https://marukohe.github.io/images/13.png">
+<meta property="og:image" content="https://marukohe.github.io/2019/10/03/images/9.png">
+<meta property="og:image" content="https://marukohe.github.io/images/10.png">
+<meta property="og:image" content="https://marukohe.github.io/images/11.png">
+<meta property="og:image" content="https://marukohe.github.io/images/12.png">
+<meta property="og:updated_time" content="2019-07-01T06:35:23.834Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入理解计算机系统学习笔记">
+<meta name="twitter:description" content="第一章 计算机系统漫游信息就是位+上下文 源程序实际上就是由一个值0和1组成的位（又称为比特），8个位被组成一组，称为子节。">
+<meta name="twitter:image" content="https://marukohe.github.io/images/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://marukohe.github.io/2019/10/03/深入理解计算机系统/">
+
+
+
+
+
+  <title>深入理解计算机系统学习笔记 | Maruko's blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Maruko's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">写不完的作业，看不懂的汇编</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-users"></i> <br>
+            
+            友链
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://marukohe.github.io/2019/10/03/深入理解计算机系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marukohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/img.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maruko's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">深入理解计算机系统学习笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-03T14:43:46+08:00">
+                2019-10-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/03/深入理解计算机系统/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/03/深入理解计算机系统/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第一章-计算机系统漫游"><a href="#第一章-计算机系统漫游" class="headerlink" title="第一章 计算机系统漫游"></a>第一章 计算机系统漫游</h1><h2 id="信息就是位-上下文"><a href="#信息就是位-上下文" class="headerlink" title="信息就是位+上下文"></a>信息就是位+上下文</h2><ul>
+<li>源程序实际上就是由一个值0和1组成的位（又称为比特），8个位被组成一组，称为子节。</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="程序被其他程序翻译成不同的格式"><a href="#程序被其他程序翻译成不同的格式" class="headerlink" title="程序被其他程序翻译成不同的格式"></a>程序被其他程序翻译成不同的格式</h2><ul>
+<li><p>在Unix系统上，从源文件到目标文件的转化是由编译器驱动程序完成的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux&gt; gcc -o hello hello.c</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>gcc将源程序文件<code>hello.c</code>翻译成可执行目标文件<code>hello</code>共分为四个阶段。<br><img src="/images/1.png" alt="图1-1" title="编译系统"></p>
+</li>
+</ul>
+<h2 id="处理器读并解释存储在内存中的指令"><a href="#处理器读并解释存储在内存中的指令" class="headerlink" title="处理器读并解释存储在内存中的指令"></a>处理器读并解释存储在内存中的指令</h2><h3 id="系统的硬件组成"><a href="#系统的硬件组成" class="headerlink" title="系统的硬件组成"></a>系统的硬件组成</h3><ol>
+<li>总线：贯穿整个系统的一组电子管道，携带信息子节并负责在各个部件间传递。</li>
+<li>I/O设备：系统与外部世界的联系通道。</li>
+<li>主存：临时存储设备，在处理器执行程序时，用来存放程序和程序处理的数据。</li>
+<li>处理器：CPU，是解释（或执行）存储在主存中指令的引擎。</li>
+</ol>
+<h3 id="运行hello程序"><a href="#运行hello程序" class="headerlink" title="运行hello程序"></a>运行hello程序</h3><p>最后一步要先将<code>&quot;hello,world\n&quot;</code>字符串重主存复制到寄存器文件，再从寄存器文件中复制到显示设备。</p>
+<h2 id="操作系统管理硬件"><a href="#操作系统管理硬件" class="headerlink" title="操作系统管理硬件"></a>操作系统管理硬件</h2><p>操作系统的两个基本功能：</p>
+<ol>
+<li>防止硬件被失控的应用程序滥用；</li>
+<li>向应用程序提供简单一制的机制来控制复杂而又通常大不相同的低级硬件设备。</li>
+</ol>
+<h1 id="第二章-信息的表示和处理"><a href="#第二章-信息的表示和处理" class="headerlink" title="第二章 信息的表示和处理"></a>第二章 信息的表示和处理</h1><h2 id="信息存储"><a href="#信息存储" class="headerlink" title="信息存储"></a>信息存储</h2><h3 id="字数据大小"><a href="#字数据大小" class="headerlink" title="字数据大小"></a>字数据大小</h3><p>基本C数据类型的典型大小（以子节为单位）<br><img src="/images/2.png" alt="图2-1"></p>
+<h3 id="寻址和子节顺序"><a href="#寻址和子节顺序" class="headerlink" title="寻址和子节顺序"></a>寻址和子节顺序</h3><ul>
+<li>对于跨越多字节的程序对象，我们必须建立两个规则：这个对象的地址是社么，以及在内存中如何排列这些子节。在几乎所有的机器上，多字节对象都被存储为连续的子节序列，对象的地址为所使用子节中最小的地址。例如，假设一个类型为int的变量x的地址为<code>0x100</code>，也就是说，地址表达式<code>&amp;x</code>的值为<code>0x100</code>。那么，x的4个子节（假设为32位）将被存储在内存的<code>0x100、0x101、0x02</code>和<code>0x103</code>的位置。</li>
+</ul>
+<h3 id="C语言中的移位运算"><a href="#C语言中的移位运算" class="headerlink" title="C语言中的移位运算"></a>C语言中的移位运算</h3><ul>
+<li>C语言提供了一组移位运算，向左或者向右移动位模式。</li>
+<li>C语言表达式<code>x&lt;&lt;k</code>会生成一个值，x向左移动k位，丢弃最高的k位，并在右端补k个0；</li>
+<li>右移运算<code>x&gt;&gt;k</code>有两种形式：<strong>逻辑右移</strong>和<strong>算术右移</strong><ul>
+<li>逻辑右移在左端补k个0；</li>
+<li>算术右移在左端补k个1；</li>
+<li>实际上，几乎所有的编译器/机器组合都对有符号数使用算术右移；</li>
+</ul>
+</li>
+<li>加法（和减法）的优先级比移位运算要高。</li>
+</ul>
+<h2 id="整数表示"><a href="#整数表示" class="headerlink" title="整数表示"></a>整数表示</h2><h3 id="补码编码"><a href="#补码编码" class="headerlink" title="补码编码"></a>补码编码</h3><ul>
+<li><p>我们用函数$B2T_w$实现补码编码:<br>对向量$\vec x=[x_{w-1},x_{w-2},…,x_0]$,<br>$$<br>B2T_w(x)\dot=-x_{w-1}2^{w-1}+\sum\limits_{i=0}^{w-2}x_i2^i<br>$$</p>
+</li>
+<li><p>32位字长的补码所能表示的范围在$TMin$和$TMax$之间：<br>$TMin=0x80000000$, $TMax=0x7FFFFFFF$</p>
+</li>
+</ul>
+<h3 id="有符号数与无符号数之间的转换"><a href="#有符号数与无符号数之间的转换" class="headerlink" title="有符号数与无符号数之间的转换"></a>有符号数与无符号数之间的转换</h3><ul>
+<li>补码转换为无符号数<br>对满足$TMin_w\le x\le TMax_w$的$x$有：<br>$$<br>T2U_w(x)=<br>\begin{cases}<br>x+2^w,  &amp;x&lt;0 \\<br>x, &amp;x\ge 0<br>\end{cases}<br>$$</li>
+<li>无符号数转换为补码<br>对满足$0\le u\le UMax_w$的$u$有：<br>$$<br>U2T_w(u)=<br>\begin{cases}<br>u, &amp;u\le TMax \\<br>u-2^w, &amp;u&gt;TMax<br>\end{cases}<br>$$</li>
+</ul>
+<h3 id="截断数字"><a href="#截断数字" class="headerlink" title="截断数字"></a>截断数字</h3><ul>
+<li><p>截断无符号数<br>令$\vec x$等于位向量$[x_{w-1},x_{w-2},…,x_0]$，而$\vec x’$是将其截断为k位的结果： $\vec x’=[x_{k-1},x_{k-2},…,x_0]$。令$x=B2U_w(\vec x), x’=B2U_k(\vec x’)$。则$x’=x\ mod\ 2^k$。</p>
+</li>
+<li><p>截断补码数值<br>令$\vec x$等于位向量$[x_{w-1},x_{w-2},…,x_0]$，而$\vec x’$是将其截断为k位的结果： $\vec x’=[x_{k-1},x_{k-2},…,x_0]$。令$x=B2U_w(\vec x), x’=B2T_k(\vec x’)$。则$x’=U2T_k(x\ mod \ 2^k)$。</p>
+</li>
+</ul>
+<h3 id="补码非的两种简便求法"><a href="#补码非的两种简便求法" class="headerlink" title="补码非的两种简便求法"></a>补码非的两种简便求法</h3><ul>
+<li>逐位取反最后+1；</li>
+<li>从最低位数的第二个1开始逐位取反。 </li>
+</ul>
+<h3 id="补码除法"><a href="#补码除法" class="headerlink" title="补码除法"></a>补码除法</h3><p>通过添加偏量值解决舍入的问题：<br>C变量<code>x</code>和<code>k</code>分别有补码值<code>x</code>和无符号数值<code>k</code>，且$0\le k\le w$，则当执行算术运算移位时，<br>C表达式<code>(x+(1&lt;&lt;k)-1)&gt;&gt;k</code>产生数值$\lceil x/2^k\rceil$。</p>
+<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><h3 id="IEEE浮点表示"><a href="#IEEE浮点表示" class="headerlink" title="IEEE浮点表示"></a>IEEE浮点表示</h3><p>IEEE浮点标准用$V=(-1)^s\times M\times 2^E$的形式来表示一个数：<br>单精度浮点格式中，<code>s</code>,<code>exp</code>和<code>frac</code>字段分别1位，k=8位和n=23位，得到一个32位表示；<br>双精度浮点格式中，<code>s</code>,<code>exp</code>和<code>frac</code>字段分别1位，k=11位和n=52位，得到一个64位表示。</p>
+<ul>
+<li>情况一：规格化的值<br>当<code>exp</code>的位模式既不全为0，也不全为1时，都属于这种情况。这种情况下，阶码的值$E=e-Bias$，其中$e$是无符号数，其位表示为$e_{k-1}…e_1e_0$，而$Bias=2^{k-1}-1$。<br>小数字段<code>frac</code>被解释为描述小数值$f$，尾数定义$M=1+f$。</li>
+<li>情况2：非规格化的值<br>当阶码区域全为0时，所表示的数是<strong>非规格化</strong>形式。在这种情况下，阶码值$E=1-Bias$，而尾数的值是$M=f$。</li>
+<li>情况3：特殊值<br>阶码数全为1时，若小数域全为0，得到的值表示无穷；否则表示$NaN$，即”Not a Number”。</li>
+</ul>
+<h3 id="浮点运算"><a href="#浮点运算" class="headerlink" title="浮点运算"></a>浮点运算</h3><p>$+\infty-\infty=NaN$。</p>
+<h1 id="第三章-程序的机器级表示"><a href="#第三章-程序的机器级表示" class="headerlink" title="第三章 程序的机器级表示"></a>第三章 程序的机器级表示</h1><h2 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h2><p>C语言数据类型在IA32中的大小  </p>
+<p><img src="/images/3.png" alt="图3-1"></p>
+<h2 id="访问信息"><a href="#访问信息" class="headerlink" title="访问信息"></a>访问信息</h2><p>一个IA32中央处理单元(CPU)包含一组8个存储32位值得<strong>寄存器</strong>，用来存储整数数据和指针。<br>最后两个寄存器<code>(%ebp和%esp)</code>保存着指向程序栈中重要位置的指针。只有根据栈管理的标准惯例才能修改这两个寄存器的值。<br><img src="/images/4.png" alt="图3-2"></p>
+<h3 id="操作数指令符"><a href="#操作数指令符" class="headerlink" title="操作数指令符"></a>操作数指令符</h3><p>大多数指令有一个或多个操作数。<br>不同的操作数被分为三种类型：</p>
+<ul>
+<li>立即数：也就是常数值，立即数的书写方式是<code>$</code>后面跟一个C表示法表示的整数，比如<code>$-577</code>或<code>$0x1F</code>。</li>
+<li>寄存器：他表示某个寄存器的内容，对双字操作来说，可以是8个32位寄存器中的一个（例如，<code>%eax</code>），对字操作来说，可以是8个16位寄存器中的一个（例如，<code>%ax</code>），或者对子节来说，可以是8个单字节寄存器元素中的一个（例如，<code>%al</code>）。</li>
+<li>存储器：它会根据计算出来的地址（通常称为有效地址）访问某个存储器位置。</li>
+</ul>
+<p>如图所示，有多种不同的寻址模式，允许不同的存储器引用。<br>$Imm(E_b,E_i,s)=Imm+R[E_b]+R[E_i]·s$，其中s必须是1，2，4或8。<br><img src="/images/5.png" alt="图3-3"> </p>
+<h3 id="数据传送指令"><a href="#数据传送指令" class="headerlink" title="数据传送指令"></a>数据传送指令</h3><p>MOV类中的指令将源操作数的值复制到目的操作数中。源操作数指定的值是一个立即数，存储在寄存器或者存储器中。<br><img src="/images/6.png" alt="图3-4"></p>
+<p>MOV指令示例给出了原类型和目的类型的五种可能组合。第一个是源操作数，第二个是目的操作数。<br><img src="/images/7.png" alt="图3-5"></p>
+<p>MOVS和MOVZ指令类都是将一个较小的源数据复制到一个较大的数据位置，高位用符号位扩展(MOVS)或者零扩展(MOVZ)。</p>
+<h2 id="算术和逻辑操作"><a href="#算术和逻辑操作" class="headerlink" title="算术和逻辑操作"></a>算术和逻辑操作</h2><p>图示整数运算操作<br><img src="/images/8.png" alt="图3-6"><br><strong>注意</strong>：二元操作中两操作数不能同时是存储器位置。</p>
+<h3 id="移位操作"><a href="#移位操作" class="headerlink" title="移位操作"></a>移位操作</h3><p>移位操作先给出移位量，然后第二项给出的是要移位的数。它可以进行算术和逻辑右移。移位量用单个字节编码，因为只允许进行0到31位的移位（只考虑移位量的低5位）。移位量可以是一个立即数，或者放在单字节寄存器元素%cl中。（这些指令很特别，因为只允许以这个特定的寄存器作为操作数。）</p>
+<h3 id="特殊的算术操作"><a href="#特殊的算术操作" class="headerlink" title="特殊的算术操作"></a>特殊的算术操作</h3><p><img src="/images/13.png" alt="图片"><br><code>mull S</code>和<code>imull S</code>要求一个参数必须再寄存器%eax中，而另一个作为指令的源操作数给出。然后乘积存放在寄存器%edx中（高32位）和%eax（低32位）中。<br>除法同理，商放在寄存器%eax中，余数存储在寄存器%edx中。</p>
+<h2 id="控制"><a href="#控制" class="headerlink" title="控制"></a>控制</h2><h3 id="条件码"><a href="#条件码" class="headerlink" title="条件码"></a>条件码</h3><p>除了整数寄存器，CPU还维护着一组单个位的条件码寄存器，它们描述了最近的算术或逻辑操作的属性。可以检测这些寄存器来执行分支指令。最常用的条件有：<br><img src="../images/9.png" alt="图3-7"></p>
+<h3 id="访问条件码"><a href="#访问条件码" class="headerlink" title="访问条件码"></a>访问条件码</h3><p>条件码通常不会直接读取，常用set指令：<br><img src="/images/10.png" alt="图3-8"><br>一条set指令的目的操作数是8个单字节寄存器元素之一，或是存储一个字节的存储器位置，将这个字节设置成0或1.为了得到一个32位结果，我们必须对最高的24位清零</p>
+<h3 id="跳转指令及其编码"><a href="#跳转指令及其编码" class="headerlink" title="跳转指令及其编码"></a>跳转指令及其编码</h3><p>一些跳转指令<br><img src="/images/11.png" alt="图3-9"></p>
+<h3 id="条件传送指令"><a href="#条件传送指令" class="headerlink" title="条件传送指令"></a>条件传送指令</h3><p><code>comxx  S,R</code>，表示当传送条件满足时，指令将S值复制到R中。<br>常见的指令有：<br><img src="/images/12.png" alt="图3-10"></p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="栈帧结构"><a href="#栈帧结构" class="headerlink" title="栈帧结构"></a>栈帧结构</h3><p>假设过程P(调用者)调用过程Q(被调用者)，则Q的参数放在P的栈帧中。另外，当P调用Q时，P中的返回地址被压入栈，形成P的栈帧的末尾。返回地址就是当程序从Q返回时应该继续执行的地方。Q的栈帧从保存的桢指针的值(例如%ebp)开始，后面是保存的其他寄存器的值。</p>
+<h3 id="递归过程"><a href="#递归过程" class="headerlink" title="递归过程"></a>递归过程</h3><p>递归调用一个函数本身和调用其他函数是一样的。栈规则提供了一种机制，每次函数调用都有它自己私有的状态信息（保存的返回位置、栈指针和被调用者保存寄存器的值）存储。如果需要，它还可以提供局部变量的存储。分配和释放的栈规则很自然地就与函数调用-返回地顺序匹配。这种实现函数调用地方法甚至对于更复杂地情况也适用，包括相互递归调用（例如，当过程P调用Q，Q再调用P）。</p>
+<h2 id="数组分配和访问"><a href="#数组分配和访问" class="headerlink" title="数组分配和访问"></a>数组分配和访问</h2><h3 id="基本规则"><a href="#基本规则" class="headerlink" title="基本规则"></a>基本规则</h3><p>对于数据类型$T$和整型常数$N$，声明如下:<br>$T\quad A[N]$;<br>它有两个效果。首先，它在存储器中分配一个$L·N$字节的连续区域；这里$L$是数据类型$T$的大小（单位为子节），用$x_A$来表示起始位置。其次，它引入了标识符$A$；可以用$A$作为指向数组开头的指针，这个指针的值就是$x_A$。可以用从$0$到$N-1$之间的整数索引来访问数组元素，数组元素$i$会被存放在地址为$x_A+L·i$的地方。</p>
+<h3 id="指针运算"><a href="#指针运算" class="headerlink" title="指针运算"></a>指针运算</h3><p>&emsp;C语言允许对指针进行运算，而计算出来的值会根据该指针引用的数据类型的大小进行伸缩。也就是说，如果p是一个指向类型$T$的数据的指针，p的值为$x_p$，那么表达式p+i的值为$x_p+L·i$，这里$L$是数据类型$T$的大小。<br>&emsp;单操作数的操作符<code>&amp;</code>和<code>*</code>可以产生指针和间接引用指针。也就是，对于一个表示某个对象的表达式$Expr$，$&amp;Expr$是给出该对象地址的一个指针。对于一个表示地址的表达式$AExpr$，$*AExpr$是给出该地址处的值。因此，表达式$Expr$和$*&amp;Expr$是等价的。可以对数组和指针应用数组下标操作。数组引用$A[i]$等同于表达式$*(A+i)$，它计算第$i$个数组元素的地址，然后访问这个存储器的位置。</p>
+<h3 id="嵌套的数组"><a href="#嵌套的数组" class="headerlink" title="嵌套的数组"></a>嵌套的数组</h3><p>要访问多维数组的元素，编译器回以数组起始为基地址,（可能需要经过伸缩的）偏移量为索引，产生计算期望的元素的偏移量，然后使用某种MOV指令。通常来说，对于一个数组声明如下：<br>$T\quad D[R][C]$<br>它的数组元素$D[R][C]$的存储器地址为<br>$$<br>D[i][j] = x_D+L(C·i+j)<br>$$<br>这里，$L$是数据类型$T$以子节为单位的大小。</p>
+<h2 id="综合：理解指针"><a href="#综合：理解指针" class="headerlink" title="综合：理解指针"></a>综合：理解指针</h2><ul>
+<li>每个指针都对应一个类型</li>
+<li>每个指针都有一个值</li>
+<li>指针用&amp;运算符创建</li>
+<li>操作符用于指针的间接引用</li>
+<li>数组与指针紧密联系</li>
+<li>将指针从一个类型强制转换成另一种类型，只改变它的类型，而不改变他的值</li>
+<li>指针也可以指向函数</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/系统/" rel="tag"><i class="fa fa-tag"></i> 系统</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/03/问求复习/" rel="next" title="问求复习">
+                <i class="fa fa-chevron-left"></i> 问求复习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/03/概率论笔记/" rel="prev" title="概率论与数理统计">
+                概率论与数理统计 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/img.JPG" alt="Marukohe">
+            
+              <p class="site-author-name" itemprop="name">Marukohe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Marukohe" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1502449818@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章-计算机系统漫游"><span class="nav-number">1.</span> <span class="nav-text">第一章 计算机系统漫游</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#信息就是位-上下文"><span class="nav-number">1.1.</span> <span class="nav-text">信息就是位+上下文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序被其他程序翻译成不同的格式"><span class="nav-number">1.2.</span> <span class="nav-text">程序被其他程序翻译成不同的格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理器读并解释存储在内存中的指令"><span class="nav-number">1.3.</span> <span class="nav-text">处理器读并解释存储在内存中的指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系统的硬件组成"><span class="nav-number">1.3.1.</span> <span class="nav-text">系统的硬件组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行hello程序"><span class="nav-number">1.3.2.</span> <span class="nav-text">运行hello程序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统管理硬件"><span class="nav-number">1.4.</span> <span class="nav-text">操作系统管理硬件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章-信息的表示和处理"><span class="nav-number">2.</span> <span class="nav-text">第二章 信息的表示和处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#信息存储"><span class="nav-number">2.1.</span> <span class="nav-text">信息存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字数据大小"><span class="nav-number">2.1.1.</span> <span class="nav-text">字数据大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寻址和子节顺序"><span class="nav-number">2.1.2.</span> <span class="nav-text">寻址和子节顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C语言中的移位运算"><span class="nav-number">2.1.3.</span> <span class="nav-text">C语言中的移位运算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整数表示"><span class="nav-number">2.2.</span> <span class="nav-text">整数表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#补码编码"><span class="nav-number">2.2.1.</span> <span class="nav-text">补码编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有符号数与无符号数之间的转换"><span class="nav-number">2.2.2.</span> <span class="nav-text">有符号数与无符号数之间的转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#截断数字"><span class="nav-number">2.2.3.</span> <span class="nav-text">截断数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#补码非的两种简便求法"><span class="nav-number">2.2.4.</span> <span class="nav-text">补码非的两种简便求法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#补码除法"><span class="nav-number">2.2.5.</span> <span class="nav-text">补码除法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浮点数"><span class="nav-number">2.3.</span> <span class="nav-text">浮点数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IEEE浮点表示"><span class="nav-number">2.3.1.</span> <span class="nav-text">IEEE浮点表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浮点运算"><span class="nav-number">2.3.2.</span> <span class="nav-text">浮点运算</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三章-程序的机器级表示"><span class="nav-number">3.</span> <span class="nav-text">第三章 程序的机器级表示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据格式"><span class="nav-number">3.1.</span> <span class="nav-text">数据格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问信息"><span class="nav-number">3.2.</span> <span class="nav-text">访问信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作数指令符"><span class="nav-number">3.2.1.</span> <span class="nav-text">操作数指令符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据传送指令"><span class="nav-number">3.2.2.</span> <span class="nav-text">数据传送指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算术和逻辑操作"><span class="nav-number">3.3.</span> <span class="nav-text">算术和逻辑操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#移位操作"><span class="nav-number">3.3.1.</span> <span class="nav-text">移位操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊的算术操作"><span class="nav-number">3.3.2.</span> <span class="nav-text">特殊的算术操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制"><span class="nav-number">3.4.</span> <span class="nav-text">控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#条件码"><span class="nav-number">3.4.1.</span> <span class="nav-text">条件码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问条件码"><span class="nav-number">3.4.2.</span> <span class="nav-text">访问条件码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跳转指令及其编码"><span class="nav-number">3.4.3.</span> <span class="nav-text">跳转指令及其编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件传送指令"><span class="nav-number">3.4.4.</span> <span class="nav-text">条件传送指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程"><span class="nav-number">3.5.</span> <span class="nav-text">过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#栈帧结构"><span class="nav-number">3.5.1.</span> <span class="nav-text">栈帧结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递归过程"><span class="nav-number">3.5.2.</span> <span class="nav-text">递归过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组分配和访问"><span class="nav-number">3.6.</span> <span class="nav-text">数组分配和访问</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本规则"><span class="nav-number">3.6.1.</span> <span class="nav-text">基本规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针运算"><span class="nav-number">3.6.2.</span> <span class="nav-text">指针运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌套的数组"><span class="nav-number">3.6.3.</span> <span class="nav-text">嵌套的数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#综合：理解指针"><span class="nav-number">3.7.</span> <span class="nav-text">综合：理解指针</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marukohe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  访问量:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Gw6SuInwfIlhXsnp9cQU216e-gzGzoHsz',
+        appKey: '20X1ggdp2ujxNW9OAxOn0Yhm',
+        placeholder: 'o((>ω< ))o来造作啊',
+        avatar:'mp',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
