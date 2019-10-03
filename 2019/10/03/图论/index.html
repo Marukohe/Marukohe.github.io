@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Maruko&#39;s blog">
 <meta property="og:description" content="概念太多，做个整理，前面的以后再补吧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-08T12:33:05.202Z">
+<meta property="og:updated_time" content="2019-10-03T14:34:15.314Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图论">
 <meta name="twitter:description" content="概念太多，做个整理，前面的以后再补吧。">
@@ -309,7 +309,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-03T14:43:46+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-03T10:00:00+08:00">
                 2019-10-03
               </time>
             
@@ -332,8 +332,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
+                  <a href="/categories/问求笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">问求笔记</span>
                   </a>
                 </span>
 
@@ -379,36 +379,37 @@
       
 
       
-        <p>概念太多，做个整理，前面的以后再补吧。</p>
-<a id="more"></a>
-
+        <p>概念太多，做个整理，前面的以后再补吧。<br><a id="more"></a></p>
 <h1 id="第1章-引言"><a href="#第1章-引言" class="headerlink" title="第1章 引言"></a>第1章 引言</h1><h1 id="第2章-度"><a href="#第2章-度" class="headerlink" title="第2章 度"></a>第2章 度</h1><h2 id="图与矩阵"><a href="#图与矩阵" class="headerlink" title="图与矩阵"></a>图与矩阵</h2><ol>
-<li>设$G$是一个阶为$n$，边数为$m$的图，其中$V(G)=\{v_1,v_2,…,v_n\}$，$E(G)=\{e_1,e_2,…,e_n\}$.图$G$的<strong>邻接矩阵</strong>定义为$n\times n$的矩阵$A=[a_{ij}]$，其中</li>
+<li>设$G$是一个阶为$n$，边数为$m$的图，其中$V(G)=\\{v_1,v_2,…,v_n\\}$，$E(G)=\\{e_1,e_2,…,e_n\\}$.图$G$的<strong>邻接矩阵</strong>定义为$n\times n$的矩阵$A=[a_{ij}]$，其中</li>
 </ol>
-<p>$$<br>a_{ij}=<br>\begin{cases}<br>1, \quad v_iv_j\in E(G) \\<br>0, \quad 其他情形<br>\end{cases}<br>$$<br>2. 图$G$的<strong>关联矩阵</strong>定义为$n\times n$的矩阵$H=[b_{ij}]$，其中<br>$$<br>b_{ij}=<br>\begin{cases}<br>1, \quad 若v_i与e_j关联 \\<br>0, \quad 其他情形<br>\end{cases}<br>$$</p>
+<script type="math/tex; mode=display">
+a_{ij}=
+\begin{cases}
+1, \quad v_iv_j\in E(G) \\\\
+0, \quad 其他情形
+\end{cases}</script><ol>
+<li>图$G$的<strong>关联矩阵</strong>定义为$n\times n$的矩阵$H=[b_{ij}]$，其中<script type="math/tex; mode=display">
+b_{ij}=
+\begin{cases}
+1, \quad 若v_i与e_j关联 \\\\
+0, \quad 其他情形
+\end{cases}</script></li>
+</ol>
 <h1 id="第3章-同构图"><a href="#第3章-同构图" class="headerlink" title="第3章 同构图"></a>第3章 同构图</h1><h1 id="第4章-树"><a href="#第4章-树" class="headerlink" title="第4章 树"></a>第4章 树</h1><h2 id="割边"><a href="#割边" class="headerlink" title="割边"></a>割边</h2><ul>
 <li>割边：连通图$G$的一条边$e=uv$称为<strong>割边</strong>(bridge)，如果$G-e$是不连通的。</li>
 <li>定理4.1：图$G$的边$e$是割边当且仅当$e$不在$G$的任一个圈上。</li>
 </ul>
 <h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><ul>
-<li><p>树：<strong>树</strong>(tree)是无圈的连通图。</p>
-</li>
-<li><p>双星：恰好包含两个非端点的树称为<strong>双星</strong>，这里两个点必然是邻接的。</p>
-</li>
-<li><p>有根树： 在有些情形下，选择树$T$的一个顶点，并指令它为$T$的<strong>根</strong>，此时$T$就成为一个<strong>有根树</strong>。</p>
-</li>
-<li><p>森林：无圈图成为森林。</p>
-</li>
-<li><p>定理4.2：图$G$是树当且仅当$G$的任何两个顶点都被唯一的路连接。</p>
-</li>
-<li><p>定理4.3：每个非平凡树至少有两个端点。</p>
-</li>
-<li><p>定理4.4：每个$n$阶树的边数是$n-1$。</p>
-</li>
-<li><p>推论4.5：阶位$n$且有$k$个连通分支的每个森林有$n-k$条边。</p>
-</li>
-<li><p>定理4.7：每个$n$阶连通图的边数至少为$n-1$。</p>
-</li>
+<li>树：<strong>树</strong>(tree)是无圈的连通图。</li>
+<li>双星：恰好包含两个非端点的树称为<strong>双星</strong>，这里两个点必然是邻接的。</li>
+<li>有根树： 在有些情形下，选择树$T$的一个顶点，并指令它为$T$的<strong>根</strong>，此时$T$就成为一个<strong>有根树</strong>。</li>
+<li>森林：无圈图成为森林。</li>
+<li>定理4.2：图$G$是树当且仅当$G$的任何两个顶点都被唯一的路连接。</li>
+<li>定理4.3：每个非平凡树至少有两个端点。</li>
+<li>定理4.4：每个$n$阶树的边数是$n-1$。</li>
+<li>推论4.5：阶位$n$且有$k$个连通分支的每个森林有$n-k$条边。</li>
+<li>定理4.7：每个$n$阶连通图的边数至少为$n-1$。</li>
 <li><p>定理4.8：设$G$是阶为n且边数为$m$的图，若$G$满足如下性质中的任意两个:<br>(1)$G$是连通的，(2)$G$是无圈的，(3)$m=n-1$，则$G$是树。</p>
 </li>
 <li><p>定理4.9：设$T$为$k$阶树，若图$G$满足$\delta(G)\geq k-1$，则$T$同构于$G$的某个子图。</p>
@@ -434,14 +435,10 @@
 <li>推论5.6：任意非平凡的连通图至少包含两个非割点的顶点。</li>
 </ol>
 <h2 id="块"><a href="#块" class="headerlink" title="块"></a>块</h2><ol>
-<li><p>不含割点的非平凡连通图称为是<strong>不可分图</strong>。</p>
-</li>
-<li><p>定理5.7：阶至少为3的图是不可分的当且仅当任意两个顶点都位于某个圈上。</p>
-</li>
-<li><p>若图$G$的一个不可分子图不是其他任一不可分子图的真子图，则称该子图是$G$的一个<strong>块</strong>。</p>
-</li>
-<li><p>定理5.8：设$R$是定义在非平凡连通图$G$的边集上的如下关系：对于$e,f\in E(G)$，若$e=f$或$e,f$位于$G$的同一个圈上，则$e,f$有关系$R$，记为$e;R;f$。则$R$是等价关系。</p>
-</li>
+<li>不含割点的非平凡连通图称为是<strong>不可分图</strong>。</li>
+<li>定理5.7：阶至少为3的图是不可分的当且仅当任意两个顶点都位于某个圈上。</li>
+<li>若图$G$的一个不可分子图不是其他任一不可分子图的真子图，则称该子图是$G$的一个<strong>块</strong>。</li>
+<li>定理5.8：设$R$是定义在非平凡连通图$G$的边集上的如下关系：对于$e,f\in E(G)$，若$e=f$或$e,f$位于$G$的同一个圈上，则$e,f$有关系$R$，记为$e\;R\;f$。则$R$是等价关系。</li>
 <li><p>推论5.9：非平凡连通图$G$的任意两个不同的块$B_1$和$B_2$具有下面性质：</p>
 <ul>
 <li>$B_1$和$B_2$是边不相交；</li>
@@ -535,12 +532,12 @@
 <li>Theorem 8.10: A graph $G$ contains a 1-factor if and only if $k_0(G-S)\leq|S|$ for every proper subset of $V(G)$.</li>
 <li>Theorem 8.11(Petersen’s Theorem): Every 3-regular bridgeless graph contains a 1-factor.</li>
 <li>Theorem 8.12: Every 3-regular graph with at most two bridges contains a 1-factor.</li>
-<li>A grapgh $G$ is said to be <strong>1-factorable</strong> if there exist 1-factors $F_1,F_2,…,F_r$ of $G$ such that ${E(F_1),E(F_2),…,E(F_r)}$ is a partition of $E(G)$. We then said that $G$ is <strong>factored</strong> into the 1-factors $F_1,F_2,…,F_r$, which form a <strong>a-factorization</strong> of $G$.</li>
+<li>A grapgh $G$ is said to be <strong>1-factorable</strong> if there exist 1-factors $F_1,F_2,…,F_r$ of $G$ such that $\{E(F_1),E(F_2),…,E(F_r)\}$ is a partition of $E(G)$. We then said that $G$ is <strong>factored</strong> into the 1-factors $F_1,F_2,…,F_r$, which form a <strong>a-factorization</strong> of $G$.</li>
 <li>Theorem 8.13: The Petersen graph is not 1-factorable.</li>
 <li>Theorem 8.14: For each positive interge $k$, the complete graph $K_{2k}$ is 1-factorable.</li>
 <li>Theorem 8.17: For every  interge $k\geq 1$, the complete graph $K_{2k+1}$ is Hamiltonian-factorable.</li>
 <li>Theorem 818: The graph $K_9$ is also $3K_3-$factorable.</li>
-<li>Theorem 8.19: A Kirkman tripe system of order $n\geq3$ exists if and only if $n\equiv3(mod,6)$</li>
+<li>Theorem 8.19: A Kirkman tripe system of order $n\geq3$ exists if and only if $n\equiv3(mod\,6)$</li>
 <li>Theorem 8.20: For every integer $k\geq1$, the complete graph $K_{2k}$ can be factored into k-1 Hamiltonian cycles and a 1-factor.</li>
 </ol>
 <h1 id="第9章-可平面性"><a href="#第9章-可平面性" class="headerlink" title="第9章 可平面性"></a>第9章 可平面性</h1><h2 id="平面图"><a href="#平面图" class="headerlink" title="平面图"></a>平面图</h2><ol>
@@ -548,7 +545,8 @@
 <li>一个图$G$称为是一个<strong>平图</strong>，如果$G$已经画在一个平面上且$G$的任何两条边都不交叉。</li>
 <li>如果$G$是一个至少含有三条边的连通平图，则$G$的每个区域的边界至少含有三条边。</li>
 <li>定理9.1(Euler恒等式)：如果$G$是一个阶位$n$，边数为$m$，且含有$r$个区域的连通平图，则$n-m+r=2$.</li>
-<li>定理9.2：如果$G$是一个阶为$n\geq3$且边数为$m$的平面图，则<pre><code>$m\leq 3n-6$</code></pre></li>
+<li>定理9.2：如果$G$是一个阶为$n\geq3$且边数为$m$的平面图，则<pre><code> $m\leq 3n-6$
+</code></pre></li>
 <li>推论9.3：每个平面图含有一个度小于等于5的顶点。</li>
 <li>推论9.4：完全图$K_5$是非平面的。</li>
 <li>图$G$称为是<strong>极大平面的</strong>，若$G$是平面的，且在$G$的任意两个不邻接的顶点之间添加一条边即可产生一个非平面图。</li>
@@ -570,7 +568,7 @@
 <li>对每个$n$阶图$G$,<br> $\chi(G)\geq\omega(G),\chi(G)\geq\frac{n}{\beta(G)}$</li>
 <li>定理10.7：对于每个图$G$，<br> $\chi(G)\leq1+\Delta(G)$</li>
 <li>定理10.8：对每个非奇圈也非完全的连通图$G$，<br> $\chi(G)\leq\Delta(G)$</li>
-<li>定理10.9：对每个图$G$，<br> $\chi(G)\leq 1+max{\delta(H)}$</li>
+<li>定理10.9：对每个图$G$，<br> $\chi(G)\leq 1+max\{\delta(H)\}$</li>
 <li>定理10.10：对于每个整数$k\geq3$，都存在一个色数为$k$的无三角的图。</li>
 </ol>
 <h2 id="边染色"><a href="#边染色" class="headerlink" title="边染色"></a>边染色</h2><ol>
@@ -609,14 +607,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/10/03/问求复习/" rel="next" title="问求复习">
+                <i class="fa fa-chevron-left"></i> 问求复习
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/03/config/" rel="prev" title="To configure my blog">
-                To configure my blog <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/03/概率论笔记/" rel="prev" title="概率论与数理统计">
+                概率论与数理统计 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -699,7 +701,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -710,7 +712,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

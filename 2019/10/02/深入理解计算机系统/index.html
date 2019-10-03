@@ -98,7 +98,7 @@
 <meta name="keywords" content="系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解计算机系统学习笔记">
-<meta property="og:url" content="https://marukohe.github.io/2019/10/03/深入理解计算机系统/index.html">
+<meta property="og:url" content="https://marukohe.github.io/2019/10/02/深入理解计算机系统/index.html">
 <meta property="og:site_name" content="Maruko&#39;s blog">
 <meta property="og:description" content="第一章 计算机系统漫游信息就是位+上下文 源程序实际上就是由一个值0和1组成的位（又称为比特），8个位被组成一组，称为子节。">
 <meta property="og:locale" content="zh-Hans">
@@ -111,11 +111,11 @@
 <meta property="og:image" content="https://marukohe.github.io/images/7.png">
 <meta property="og:image" content="https://marukohe.github.io/images/8.png">
 <meta property="og:image" content="https://marukohe.github.io/images/13.png">
-<meta property="og:image" content="https://marukohe.github.io/2019/10/03/images/9.png">
+<meta property="og:image" content="https://marukohe.github.io/2019/10/02/images/9.png">
 <meta property="og:image" content="https://marukohe.github.io/images/10.png">
 <meta property="og:image" content="https://marukohe.github.io/images/11.png">
 <meta property="og:image" content="https://marukohe.github.io/images/12.png">
-<meta property="og:updated_time" content="2019-07-01T06:35:23.834Z">
+<meta property="og:updated_time" content="2019-10-03T14:34:09.754Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解计算机系统学习笔记">
 <meta name="twitter:description" content="第一章 计算机系统漫游信息就是位+上下文 源程序实际上就是由一个值0和1组成的位（又称为比特），8个位被组成一组，称为子节。">
@@ -149,7 +149,7 @@
 
 
 
-  <link rel="canonical" href="https://marukohe.github.io/2019/10/03/深入理解计算机系统/">
+  <link rel="canonical" href="https://marukohe.github.io/2019/10/02/深入理解计算机系统/">
 
 
 
@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://marukohe.github.io/2019/10/03/深入理解计算机系统/">
+    <link itemprop="mainEntityOfPage" href="https://marukohe.github.io/2019/10/02/深入理解计算机系统/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Marukohe">
@@ -323,8 +323,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-03T14:43:46+08:00">
-                2019-10-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-02T14:00:00+08:00">
+                2019-10-02
               </time>
             
 
@@ -346,8 +346,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
+                  <a href="/categories/计算机系统笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机系统笔记</span>
                   </a>
                 </span>
 
@@ -364,8 +364,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/10/03/深入理解计算机系统/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/03/深入理解计算机系统/" itemprop="commentCount"></span>
+                <a href="/2019/10/02/深入理解计算机系统/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/02/深入理解计算机系统/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -397,9 +397,8 @@
 <li>源程序实际上就是由一个值0和1组成的位（又称为比特），8个位被组成一组，称为子节。</li>
 </ul>
 <a id="more"></a>
-
 <h2 id="程序被其他程序翻译成不同的格式"><a href="#程序被其他程序翻译成不同的格式" class="headerlink" title="程序被其他程序翻译成不同的格式"></a>程序被其他程序翻译成不同的格式</h2><ul>
-<li><p>在Unix系统上，从源文件到目标文件的转化是由编译器驱动程序完成的：</p>
+<li><p>在Unix系统上，从源文件到目标文件的转化是由编译器驱动程序完成的:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux&gt; gcc -o hello hello.c</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>gcc将源程序文件<code>hello.c</code>翻译成可执行目标文件<code>hello</code>共分为四个阶段。<br><img src="/images/1.png" alt="图1-1" title="编译系统"></p>
@@ -417,7 +416,8 @@
 <li>防止硬件被失控的应用程序滥用；</li>
 <li>向应用程序提供简单一制的机制来控制复杂而又通常大不相同的低级硬件设备。</li>
 </ol>
-<h1 id="第二章-信息的表示和处理"><a href="#第二章-信息的表示和处理" class="headerlink" title="第二章 信息的表示和处理"></a>第二章 信息的表示和处理</h1><h2 id="信息存储"><a href="#信息存储" class="headerlink" title="信息存储"></a>信息存储</h2><h3 id="字数据大小"><a href="#字数据大小" class="headerlink" title="字数据大小"></a>字数据大小</h3><p>基本C数据类型的典型大小（以子节为单位）<br><img src="/images/2.png" alt="图2-1"></p>
+<h1 id="第二章-信息的表示和处理"><a href="#第二章-信息的表示和处理" class="headerlink" title="第二章 信息的表示和处理"></a>第二章 信息的表示和处理</h1><h2 id="信息存储"><a href="#信息存储" class="headerlink" title="信息存储"></a>信息存储</h2><h3 id="字数据大小"><a href="#字数据大小" class="headerlink" title="字数据大小"></a>字数据大小</h3><p>基本C数据类型的典型大小（以子节为单位）</p>
+<p><img src="/images/2.png" alt="图2-1"></p>
 <h3 id="寻址和子节顺序"><a href="#寻址和子节顺序" class="headerlink" title="寻址和子节顺序"></a>寻址和子节顺序</h3><ul>
 <li>对于跨越多字节的程序对象，我们必须建立两个规则：这个对象的地址是社么，以及在内存中如何排列这些子节。在几乎所有的机器上，多字节对象都被存储为连续的子节序列，对象的地址为所使用子节中最小的地址。例如，假设一个类型为int的变量x的地址为<code>0x100</code>，也就是说，地址表达式<code>&amp;x</code>的值为<code>0x100</code>。那么，x的4个子节（假设为32位）将被存储在内存的<code>0x100、0x101、0x02</code>和<code>0x103</code>的位置。</li>
 </ul>
@@ -433,14 +433,27 @@
 <li>加法（和减法）的优先级比移位运算要高。</li>
 </ul>
 <h2 id="整数表示"><a href="#整数表示" class="headerlink" title="整数表示"></a>整数表示</h2><h3 id="补码编码"><a href="#补码编码" class="headerlink" title="补码编码"></a>补码编码</h3><ul>
-<li><p>我们用函数$B2T_w$实现补码编码:<br>对向量$\vec x=[x_{w-1},x_{w-2},…,x_0]$,<br>$$<br>B2T_w(x)\dot=-x_{w-1}2^{w-1}+\sum\limits_{i=0}^{w-2}x_i2^i<br>$$</p>
-</li>
+<li><p>我们用函数$B2T_w$实现补码编码:<br>对向量$\vec x=[x_{w-1},x_{w-2},…,x_0]$,</p>
+<script type="math/tex; mode=display">
+B2T_w(x)\dot=-x_{w-1}2^{w-1}+\sum\limits_{i=0}^{w-2}x_i2^i</script></li>
 <li><p>32位字长的补码所能表示的范围在$TMin$和$TMax$之间：<br>$TMin=0x80000000$, $TMax=0x7FFFFFFF$</p>
 </li>
 </ul>
 <h3 id="有符号数与无符号数之间的转换"><a href="#有符号数与无符号数之间的转换" class="headerlink" title="有符号数与无符号数之间的转换"></a>有符号数与无符号数之间的转换</h3><ul>
-<li>补码转换为无符号数<br>对满足$TMin_w\le x\le TMax_w$的$x$有：<br>$$<br>T2U_w(x)=<br>\begin{cases}<br>x+2^w,  &amp;x&lt;0 \\<br>x, &amp;x\ge 0<br>\end{cases}<br>$$</li>
-<li>无符号数转换为补码<br>对满足$0\le u\le UMax_w$的$u$有：<br>$$<br>U2T_w(u)=<br>\begin{cases}<br>u, &amp;u\le TMax \\<br>u-2^w, &amp;u&gt;TMax<br>\end{cases}<br>$$</li>
+<li><p>补码转换为无符号数<br>对满足$TMin_w\le x\le TMax_w$的$x$有：</p>
+<script type="math/tex; mode=display">
+T2U_w(x)=
+\begin{cases}
+x+2^w,  &x<0 \\\\
+x, &x\ge 0
+\end{cases}</script></li>
+<li><p>无符号数转换为补码<br>对满足$0\le u\le UMax_w$的$u$有：</p>
+<script type="math/tex; mode=display">
+U2T_w(u)=
+\begin{cases}
+u, &u\le TMax \\\\
+u-2^w, &u>TMax
+\end{cases}</script></li>
 </ul>
 <h3 id="截断数字"><a href="#截断数字" class="headerlink" title="截断数字"></a>截断数字</h3><ul>
 <li><p>截断无符号数<br>令$\vec x$等于位向量$[x_{w-1},x_{w-2},…,x_0]$，而$\vec x’$是将其截断为k位的结果： $\vec x’=[x_{k-1},x_{k-2},…,x_0]$。令$x=B2U_w(\vec x), x’=B2U_k(\vec x’)$。则$x’=x\ mod\ 2^k$。</p>
@@ -483,8 +496,10 @@
 <h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="栈帧结构"><a href="#栈帧结构" class="headerlink" title="栈帧结构"></a>栈帧结构</h3><p>假设过程P(调用者)调用过程Q(被调用者)，则Q的参数放在P的栈帧中。另外，当P调用Q时，P中的返回地址被压入栈，形成P的栈帧的末尾。返回地址就是当程序从Q返回时应该继续执行的地方。Q的栈帧从保存的桢指针的值(例如%ebp)开始，后面是保存的其他寄存器的值。</p>
 <h3 id="递归过程"><a href="#递归过程" class="headerlink" title="递归过程"></a>递归过程</h3><p>递归调用一个函数本身和调用其他函数是一样的。栈规则提供了一种机制，每次函数调用都有它自己私有的状态信息（保存的返回位置、栈指针和被调用者保存寄存器的值）存储。如果需要，它还可以提供局部变量的存储。分配和释放的栈规则很自然地就与函数调用-返回地顺序匹配。这种实现函数调用地方法甚至对于更复杂地情况也适用，包括相互递归调用（例如，当过程P调用Q，Q再调用P）。</p>
 <h2 id="数组分配和访问"><a href="#数组分配和访问" class="headerlink" title="数组分配和访问"></a>数组分配和访问</h2><h3 id="基本规则"><a href="#基本规则" class="headerlink" title="基本规则"></a>基本规则</h3><p>对于数据类型$T$和整型常数$N$，声明如下:<br>$T\quad A[N]$;<br>它有两个效果。首先，它在存储器中分配一个$L·N$字节的连续区域；这里$L$是数据类型$T$的大小（单位为子节），用$x_A$来表示起始位置。其次，它引入了标识符$A$；可以用$A$作为指向数组开头的指针，这个指针的值就是$x_A$。可以用从$0$到$N-1$之间的整数索引来访问数组元素，数组元素$i$会被存放在地址为$x_A+L·i$的地方。</p>
-<h3 id="指针运算"><a href="#指针运算" class="headerlink" title="指针运算"></a>指针运算</h3><p>&emsp;C语言允许对指针进行运算，而计算出来的值会根据该指针引用的数据类型的大小进行伸缩。也就是说，如果p是一个指向类型$T$的数据的指针，p的值为$x_p$，那么表达式p+i的值为$x_p+L·i$，这里$L$是数据类型$T$的大小。<br>&emsp;单操作数的操作符<code>&amp;</code>和<code>*</code>可以产生指针和间接引用指针。也就是，对于一个表示某个对象的表达式$Expr$，$&amp;Expr$是给出该对象地址的一个指针。对于一个表示地址的表达式$AExpr$，$*AExpr$是给出该地址处的值。因此，表达式$Expr$和$*&amp;Expr$是等价的。可以对数组和指针应用数组下标操作。数组引用$A[i]$等同于表达式$*(A+i)$，它计算第$i$个数组元素的地址，然后访问这个存储器的位置。</p>
-<h3 id="嵌套的数组"><a href="#嵌套的数组" class="headerlink" title="嵌套的数组"></a>嵌套的数组</h3><p>要访问多维数组的元素，编译器回以数组起始为基地址,（可能需要经过伸缩的）偏移量为索引，产生计算期望的元素的偏移量，然后使用某种MOV指令。通常来说，对于一个数组声明如下：<br>$T\quad D[R][C]$<br>它的数组元素$D[R][C]$的存储器地址为<br>$$<br>D[i][j] = x_D+L(C·i+j)<br>$$<br>这里，$L$是数据类型$T$以子节为单位的大小。</p>
+<h3 id="指针运算"><a href="#指针运算" class="headerlink" title="指针运算"></a>指针运算</h3><p>&emsp;C语言允许对指针进行运算，而计算出来的值会根据该指针引用的数据类型的大小进行伸缩。也就是说，如果p是一个指向类型$T$的数据的指针，p的值为$x_p$，那么表达式p+i的值为$x_p+L·i$，这里$L$是数据类型$T$的大小。<br>&emsp;单操作数的操作符<code>&amp;</code>和<code>*</code>可以产生指针和间接引用指针。也就是，对于一个表示某个对象的表达式$Expr$，$\&amp;Expr$是给出该对象地址的一个指针。对于一个表示地址的表达式$AExpr$，*$AExpr$是给出该地址处的值。因此，表达式$Expr$和*$\&amp;Expr$是等价的。可以对数组和指针应用数组下标操作。数组引用$A[i]$等同于表达式*$(A+i)$，它计算第$i$个数组元素的地址，然后访问这个存储器的位置。</p>
+<h3 id="嵌套的数组"><a href="#嵌套的数组" class="headerlink" title="嵌套的数组"></a>嵌套的数组</h3><p>要访问多维数组的元素，编译器回以数组起始为基地址,（可能需要经过伸缩的）偏移量为索引，产生计算期望的元素的偏移量，然后使用某种MOV指令。通常来说，对于一个数组声明如下：<br>$T\quad D[R][C]$<br>它的数组元素$D[R][C]$的存储器地址为</p>
+<script type="math/tex; mode=display">
+D[i][j] = x_D+L(C·i+j)</script><p>这里，$L$是数据类型$T$以子节为单位的大小。</p>
 <h2 id="综合：理解指针"><a href="#综合：理解指针" class="headerlink" title="综合：理解指针"></a>综合：理解指针</h2><ul>
 <li>每个指针都对应一个类型</li>
 <li>每个指针都有一个值</li>
@@ -524,8 +539,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/03/问求复习/" rel="next" title="问求复习">
-                <i class="fa fa-chevron-left"></i> 问求复习
+              <a href="/2019/10/02/hexo-mathjax修复/" rel="next" title="Mathjax数学公式无法显示">
+                <i class="fa fa-chevron-left"></i> Mathjax数学公式无法显示
               </a>
             
           </div>
@@ -534,8 +549,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/03/概率论笔记/" rel="prev" title="概率论与数理统计">
-                概率论与数理统计 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/03/问求复习/" rel="prev" title="问求复习">
+                问求复习 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -618,7 +633,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -629,7 +644,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

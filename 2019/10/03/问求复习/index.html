@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Maruko&#39;s blog">
 <meta property="og:description" content="3.1动态规划">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-08T15:14:13.985Z">
+<meta property="og:updated_time" content="2019-10-03T14:33:51.950Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="问求复习">
 <meta name="twitter:description" content="3.1动态规划">
@@ -309,7 +309,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-03T14:43:46+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-03T10:00:00+08:00">
                 2019-10-03
               </time>
             
@@ -332,8 +332,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
+                  <a href="/categories/问求笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">问求笔记</span>
                   </a>
                 </span>
 
@@ -391,15 +391,16 @@
 </li>
 <li><p>完全图：任何两个不同的顶点都是邻接的，记为$K_n$</p>
 </li>
-<li><p>图论第一定理：若图$G$的边数为$m$，则<br>$$<br>\sum\limits_{v\in V(G)}deg,v = 2m<br>$$</p>
-</li>
+<li><p>图论第一定理：若图$G$的边数为$m$，则</p>
+<script type="math/tex; mode=display">
+\sum\limits_{v\in V(G)}deg\,v = 2m</script></li>
 </ul>
 <ul>
 <li>立方图：3正则图</li>
 <li>定理2.10：由非负整数构成的非增序列$s: d_1,d_2,…,d_n(n\geq2,d_1\geq 1)$是可图的当且仅当序列</li>
 </ul>
-<p>$$<br>s_1:d_2-1,d_3-1,…,d_{d_1+1}-1,…,d_n是可图的<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+s_1:d_2-1,d_3-1,...,d_{d_1+1}-1,...,d_n是可图的</script><ul>
 <li>同构图：若两个图仅仅区别在画法或者顶点的标号上，则称它们是同构的。</li>
 <li>自补的：若一个图和它的补图同构，则称这个图是自补的。</li>
 </ul>
@@ -457,13 +458,13 @@
 <li>非平凡图$G$的边连通度$\lambda(G)$定义为$G$的一个最小边割的基数。</li>
 <li>对于任意图$G$，</li>
 </ul>
-<p>$$<br>\kappa(G)\leq \lambda(G)\leq\delta(G)<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+\kappa(G)\leq \lambda(G)\leq\delta(G)</script><ul>
 <li>若$G$是一个立方图，则$\kappa(G)=\lambda(G)$。</li>
 <li>若$G$是一个阶为$n$且边数为$m(m\geq n-1)$的图，则</li>
 </ul>
-<p>$$<br>\kappa(G)\leq\lfloor\frac{2m}{n}\rfloor<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+\kappa(G)\leq\lfloor\frac{2m}{n}\rfloor</script><ul>
 <li>设$S$是图$G$的顶点集的一个子集，$u$和$v$是$G$的两个顶点。若$G-S$是不连通的，且$u$和$v$属于$G-S$的不同的连通分支，则称$S$分离$u$和$v$。集合$S$称为是一个$u-v$分离集。</li>
 <li><code>Menger</code>定理：设$u$和$v$是图$G$的不邻接的两个顶点，则$u-v$分离集中顶点的最小个数等于$G$中内部不相交$u-v$路的最大个数。</li>
 <li>一个非平凡图$G$是$k(k\geq 2)$连通的当且仅当对于$G$的任意两个顶点$u,v$，$G$至少有$k$条内部不相交的$u-v$路。</li>
@@ -480,16 +481,16 @@
 <li>一个含图$G$的每个顶点的圈称为是$G$的一个$Hamilton$圈。</li>
 <li>如果$G$是一个$Hamilton$图，则对$G$顶点的任一个非空真子集$S$，都有</li>
 </ul>
-<p>$$<br>k(G-S)\leq |S|<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+k(G-S)\leq |S|</script><ul>
 <li>设$G$为一个图，如果对$V(G)$的某个非空真子集$S$，有$k(G-S)&gt;|S|$，则$G$不是$Hamilton$的。</li>
 <li>如果图$G$含有一个割点，则$G$不是$Hamilton$的。</li>
 <li>设$G$为一个$n(n\geq3)$阶的图，如果对于$G$的每对不邻接的顶点$u,v$有</li>
 </ul>
-<p>$$<br>deg;u+deg;v\geq n<br>$$</p>
-<p>​    则$G$是$Hamilton$的。</p>
+<script type="math/tex; mode=display">
+deg\;u+deg\;v\geq n</script><p>​    则$G$是$Hamilton$的。</p>
 <ul>
-<li>设$u$和$v$是一个$n$阶图$G$的两个不邻接的顶点，并且$deg;u+deg;v\geq n$，则$G+uv$是$Hamilton$的当且仅当$G$是$Hamilton$的。</li>
+<li>设$u$和$v$是一个$n$阶图$G$的两个不邻接的顶点，并且$deg\;u+deg\;v\geq n$，则$G+uv$是$Hamilton$的当且仅当$G$是$Hamilton$的。</li>
 <li>一个图是$Hamilton$的当且仅当它的闭包是$Hamilton$的。</li>
 <li>设$G$是一个$n(\geq3)$阶的图，如果对于每个整数$j(1\leq j&lt;\frac{n}{2})$，$G$中度至多为$j$的顶点数小于$j$，则$G$是$Hamilton$的。</li>
 </ul>
@@ -504,12 +505,12 @@
 <li>Theorem 8.10: A graph $G$ contains a 1-factor if and only if $k_0(G-S)\leq|S|$ for every proper subset of $V(G)$. （$k_0$）为奇连通分支个数。</li>
 <li>Theorem 8.11(Petersen’s Theorem): Every 3-regular bridgeless graph contains a 1-factor.</li>
 <li>Theorem 8.12: Every 3-regular graph with at most two bridges contains a 1-factor.</li>
-<li>A graph $G$ is said to be <strong>1-factorable</strong> if there exist 1-factors $F_1,F_2,…,F_r$ of $G$ such that ${E(F_1),E(F_2),…,E(F_r)}$ is a partition of $E(G)$. We then said that $G$ is <strong>factored</strong> into the 1-factors $F_1,F_2,…,F_r$, which form a <strong>a-factorization</strong> of $G$.</li>
+<li>A graph $G$ is said to be <strong>1-factorable</strong> if there exist 1-factors $F_1,F_2,…,F_r$ of $G$ such that $\{E(F_1),E(F_2),…,E(F_r)\}$ is a partition of $E(G)$. We then said that $G$ is <strong>factored</strong> into the 1-factors $F_1,F_2,…,F_r$, which form a <strong>a-factorization</strong> of $G$.</li>
 <li>Theorem 8.13: The Petersen graph is not 1-factorable.</li>
 <li>Theorem 8.14: For each positive interge $k$, the complete graph $K_{2k}$ is 1-factorable.</li>
 <li>Theorem 8.17: For every  interge $k\geq 1$, the complete graph $K_{2k+1}$ is Hamiltonian-factorable.</li>
 <li>Theorem 818: The graph $K_9$ is also $3K_3-$factorable.</li>
-<li>Theorem 8.19: A Kirkman tripe system of order $n\geq3​$ exists if and only if $n\equiv3(mod,6)​$</li>
+<li>Theorem 8.19: A Kirkman tripe system of order $n\geq3​$ exists if and only if $n\equiv3(mod\,6)​$</li>
 <li>Theorem 8.20: For every integer $k\geq1$, the complete graph $K_{2k}$ can be factored into k-1 Hamiltonian cycles and a 1-factor.</li>
 </ul>
 <h2 id="3-12最大流算法"><a href="#3-12最大流算法" class="headerlink" title="3.12最大流算法"></a>3.12最大流算法</h2><p><a href="https://mengzelev.github.io/2018/12/05/clrs-26Maximum-Flow/" target="_blank" rel="noopener">萌捷列夫笔记</a></p>
@@ -538,8 +539,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/03/Bootstrap Callout/" rel="next" title="Bootstrap Callout的使用">
-                <i class="fa fa-chevron-left"></i> Bootstrap Callout的使用
+              <a href="/2019/10/02/深入理解计算机系统/" rel="next" title="深入理解计算机系统学习笔记">
+                <i class="fa fa-chevron-left"></i> 深入理解计算机系统学习笔记
               </a>
             
           </div>
@@ -548,8 +549,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/03/深入理解计算机系统/" rel="prev" title="深入理解计算机系统学习笔记">
-                深入理解计算机系统学习笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/03/图论/" rel="prev" title="图论">
+                图论 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -632,7 +633,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -643,7 +644,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

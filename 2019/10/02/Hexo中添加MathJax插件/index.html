@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="今天突然发现博客无法显示数学公式了 虽然不怎么写博客但是不显示数学公式实在心里难受各种STFW未果，陷入了时间黑洞后来发现不知道为什么Mathjax的CDN地址被改了，Orz改回默认的就好了如下 1//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML  又能看到好康的数学公式了~">
+<meta name="description" content="markdown语法用于Github中是不支持Latex语句的，安装MathJax插件可以使用latex公式，下面是配置方法:">
 <meta name="keywords" content="hexo,MathJax">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mathjax数学公式无法显示">
-<meta property="og:url" content="https://marukohe.github.io/2019/10/03/hexo-mathjax修复/index.html">
+<meta property="og:title" content="Hexo中添加MathJax插件">
+<meta property="og:url" content="https://marukohe.github.io/2019/10/02/Hexo中添加MathJax插件/index.html">
 <meta property="og:site_name" content="Maruko&#39;s blog">
-<meta property="og:description" content="今天突然发现博客无法显示数学公式了 虽然不怎么写博客但是不显示数学公式实在心里难受各种STFW未果，陷入了时间黑洞后来发现不知道为什么Mathjax的CDN地址被改了，Orz改回默认的就好了如下 1//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML  又能看到好康的数学公式了~">
+<meta property="og:description" content="markdown语法用于Github中是不支持Latex语句的，安装MathJax插件可以使用latex公式，下面是配置方法:">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-20T06:10:30.290Z">
+<meta property="og:updated_time" content="2019-10-03T14:29:47.800Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mathjax数学公式无法显示">
-<meta name="twitter:description" content="今天突然发现博客无法显示数学公式了 虽然不怎么写博客但是不显示数学公式实在心里难受各种STFW未果，陷入了时间黑洞后来发现不知道为什么Mathjax的CDN地址被改了，Orz改回默认的就好了如下 1//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML  又能看到好康的数学公式了~">
+<meta name="twitter:title" content="Hexo中添加MathJax插件">
+<meta name="twitter:description" content="markdown语法用于Github中是不支持Latex语句的，安装MathJax插件可以使用latex公式，下面是配置方法:">
 
 
 
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="https://marukohe.github.io/2019/10/03/hexo-mathjax修复/">
+  <link rel="canonical" href="https://marukohe.github.io/2019/10/02/Hexo中添加MathJax插件/">
 
 
 
 
 
-  <title>Mathjax数学公式无法显示 | Maruko's blog</title>
+  <title>Hexo中添加MathJax插件 | Maruko's blog</title>
   
 
 
@@ -280,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://marukohe.github.io/2019/10/03/hexo-mathjax修复/">
+    <link itemprop="mainEntityOfPage" href="https://marukohe.github.io/2019/10/02/Hexo中添加MathJax插件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Marukohe">
@@ -297,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Mathjax数学公式无法显示</h1>
+          <h1 class="post-title" itemprop="name headline">Hexo中添加MathJax插件</h1>
         
 
         <div class="post-meta">
@@ -309,8 +309,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-03T14:43:46+08:00">
-                2019-10-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-02T09:00:00+08:00">
+                2019-10-02
               </time>
             
 
@@ -328,8 +328,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/10/03/hexo-mathjax修复/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/03/hexo-mathjax修复/" itemprop="commentCount"></span>
+                <a href="/2019/10/02/Hexo中添加MathJax插件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/02/Hexo中添加MathJax插件/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -357,13 +357,27 @@
       
 
       
-        <a id="more"></a>
-<p>今天突然发现博客无法显示数学公式了</p>
-<p>虽然不怎么写博客<br>但是不显示数学公式实在心里难受<br>各种<code>STFW</code>未果，陷入了时间黑洞<br>后来发现不知道为什么Mathjax的CDN地址被改了，Orz<br>改回默认的就好了<br>如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML</span><br></pre></td></tr></table></figure>
-
-<p>又能看到好康的数学公式了~</p>
-
+        <p>markdown语法用于Github中是不支持Latex语句的，安装MathJax插件可以使用latex公式，下面是配置方法:  </p>
+<a id="more"></a>
+<p>在Hexo的安装目录打开<code>git bash</code>，输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-math --save</span><br></pre></td></tr></table></figure>
+<p>在站点配置<code>_config.yml</code>文件中添加<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">math:</span></span><br><span class="line"><span class="attr">  engine:</span> <span class="string">'mathjax'</span> <span class="comment"># or 'katex'</span></span><br><span class="line"><span class="attr">  mathjax:</span></span><br><span class="line"><span class="attr">    src:</span> <span class="string">custom_mathjax_source</span></span><br><span class="line"><span class="attr">    config:</span></span><br><span class="line">      <span class="comment"># MathJax config</span></span><br></pre></td></tr></table></figure></p>
+<p>然后进入<code>next</code>目录下的主题配置文件<code>_config.yml</code>，搜索找到<code>mathjax</code>字段，将默认的<code>false</code>改为<code>true</code>即可：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mathjax:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+<p>最后可以通过<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure></p>
+<p>在本地测试一下  </p>
+<p>效果如下<br><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="formula">$$<span class="tag">\<span class="name">frac</span><span class="string">&#123;\partial u&#125;</span><span class="string">&#123;\partial t&#125;</span></span></span></span><br><span class="line"><span class="formula">= h^2 <span class="tag">\<span class="name">left</span></span>( <span class="tag">\<span class="name">frac</span><span class="string">&#123;\partial^2 u&#125;</span><span class="string">&#123;\partial x^2&#125;</span></span> +</span></span><br><span class="line"><span class="formula"><span class="tag">\<span class="name">frac</span><span class="string">&#123;\partial^2 u&#125;</span><span class="string">&#123;\partial y^2&#125;</span></span> +</span></span><br><span class="line"><span class="formula"><span class="tag">\<span class="name">frac</span><span class="string">&#123;\partial^2 u&#125;</span><span class="string">&#123;\partial z^2&#125;</span></span><span class="tag">\<span class="name">right</span></span>)$$</span></span><br></pre></td></tr></table></figure></p>
+<script type="math/tex; mode=display">\frac{\partial u}{\partial t}
+= h^2 \left( \frac{\partial^2 u}{\partial x^2} +
+\frac{\partial^2 u}{\partial y^2} +
+\frac{\partial^2 u}{\partial z^2}\right)</script><hr>
+<p>7月19号mark<br>MathJax语法中换行符<code>\\</code>被markdown转义为<code>\</code>，写Latex始终不对，最后加了四个<code>\\\\</code>才成功，如下</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="formula">$$</span></span><br><span class="line"><span class="formula">T2U_w(x)=</span></span><br><span class="line"><span class="formula"><span class="tag">\<span class="name">begin</span><span class="string">&#123;cases&#125;</span></span></span></span><br><span class="line"><span class="formula">x+2^w,  &amp;x&lt;0 <span class="tag">\<span class="name">\</span></span><span class="tag">\<span class="name">\</span></span></span></span><br><span class="line"><span class="formula">x, &amp;x<span class="tag">\<span class="name">ge</span></span> 0</span></span><br><span class="line"><span class="formula"><span class="tag">\<span class="name">end</span><span class="string">&#123;cases&#125;</span></span></span></span><br><span class="line"><span class="formula">$$</span></span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">
+T2U_w(x)=
+\begin{cases}
+x+2^w,  &x<0 \\\\
+x, &x\ge 0
+\end{cases}</script>
       
     </div>
     
@@ -395,8 +409,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/03/git/" rel="next" title="git学习记录">
-                <i class="fa fa-chevron-left"></i> git学习记录
+              <a href="/2019/10/01/English Words/" rel="next" title="高级英语词汇">
+                <i class="fa fa-chevron-left"></i> 高级英语词汇
               </a>
             
           </div>
@@ -405,8 +419,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/03/OJ复习/" rel="prev" title="OJ复习">
-                OJ复习 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/02/Bootstrap Callout/" rel="prev" title="Bootstrap Callout的使用">
+                Bootstrap Callout的使用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -480,7 +494,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -491,7 +505,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
