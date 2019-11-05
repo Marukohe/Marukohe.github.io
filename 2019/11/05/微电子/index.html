@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("https://marukohe.github.io/"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="微电子,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="电路模型和电路定律">
+<meta name="keywords" content="微电子">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微电子笔记">
+<meta property="og:url" content="https://marukohe.github.io/2019/11/05/微电子/index.html">
+<meta property="og:site_name" content="Maruko&#39;s blog">
+<meta property="og:description" content="电路模型和电路定律">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-05T06:20:17.134Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微电子笔记">
+<meta name="twitter:description" content="电路模型和电路定律">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://marukohe.github.io/2019/11/05/微电子/">
+
+
+
+
+
+  <title>微电子笔记 | Maruko's blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Maruko's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">写不完的作业，看不懂的汇编</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-users"></i> <br>
+            
+            友链
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://marukohe.github.io/2019/11/05/微电子/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marukohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/img.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maruko's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">微电子笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-05T14:20:00+08:00">
+                2019-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/11/05/微电子/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/05/微电子/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="电路模型和电路定律"><a href="#电路模型和电路定律" class="headerlink" title="电路模型和电路定律"></a>电路模型和电路定律</h2><a id="more"></a>
+<h3 id="从电子计算机说起"><a href="#从电子计算机说起" class="headerlink" title="从电子计算机说起"></a>从电子计算机说起</h3><ul>
+<li>电子管-&gt;晶体管-&gt;集成电路</li>
+<li><strong>摩尔定律</strong>：1965年，Gordon Moore总结集成电路技术的发展，语言IC集成度每年增加一倍，即技术每两年提高一代。1975年，又提出修正，八十年代后提高速度将放慢，每三年技术提高一代，实际上每2到3年提高一代。</li>
+<li><strong>集成度</strong>：每块集成电路芯片中包含的元器件数目。</li>
+<li><strong>微电子学</strong>：研究在固体（主要是半导体材料）上构成的微小化电路及系统的电子学分支，主要是研究电子或离子在固体材料中的运动规律及其应用，并利用它实现电磁信号和信息处理功能的电子科学。它以实现电路和系统的集成为目的。微电子学中实现的电路和系统又称为集成电路和集成系统。</li>
+</ul>
+<h3 id="微电子学与微电子技术的概念"><a href="#微电子学与微电子技术的概念" class="headerlink" title="微电子学与微电子技术的概念"></a>微电子学与微电子技术的概念</h3><ul>
+<li>微电子学的金字塔结构：产品-&gt;芯片和外围设备-&gt;电路与测试封装-&gt;工艺集成与可靠性-&gt;器件设计与优化-&gt;材料生长</li>
+<li><strong>微电子技术</strong>是随着集成电路，尤其是超大型规模集成电路而发展起来的一门新的技术。包括系统电路设计、器件物理、工艺技术、材料制备、自动测试以及封装等一系列专门的技术，微电子技术是微电子学中的各项工艺技术的总和。</li>
+<li><strong>集成电路</strong>：通过一系列特定的加工工艺，将晶体管器件，按照一定的电路互连，”集成“在一块半导体单晶片上，封装在一个外壳内，执行特定电路或系统功能。制造过程：<ul>
+<li>电路设计</li>
+<li>工艺制造</li>
+<li>测试封装</li>
+</ul>
+</li>
+<li><strong>集成电路的核心：单元器件</strong></li>
+</ul>
+<h4 id="集成电路分类"><a href="#集成电路分类" class="headerlink" title="集成电路分类"></a>集成电路分类</h4><ul>
+<li>器件结构类型：<ul>
+<li>双极集成电路：主要有双极晶体管构成，优点是速度高，驱动能力强，缺点是功耗较大，集成度较低。</li>
+<li>金属-氧化物-半导体（MOS）集成电路：主要由MOS晶体管（单极晶体管）构成，功耗低，集成度高，随着特征尺寸的缩小，速度也可以提高</li>
+<li>双极-MOS(BiMOS)集成电路</li>
+</ul>
+</li>
+<li>集成电路规模：<ul>
+<li>小规模，中规模，大规模，超大规模。特大规模，巨大规模</li>
+</ul>
+</li>
+<li>制作工艺：<ul>
+<li>单片集成电路<ul>
+<li>它是指电路中所有的元器件都制作在同一块半导体基片上的集成电路</li>
+<li>在半导体集成电路中最常用的半导体材料是硅</li>
+</ul>
+</li>
+<li>混合集成电路：<ul>
+<li>厚膜集成电路</li>
+<li>薄膜集成电路</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>应用领域：<ul>
+<li>数字集成电路：处理数字信号的集成电路</li>
+<li>模拟集成电路：处理模拟信号的集成电路</li>
+<li>数模混合集成电路</li>
+</ul>
+</li>
+</ul>
+<h4 id="微电子学器件"><a href="#微电子学器件" class="headerlink" title="微电子学器件"></a>微电子学器件</h4><ul>
+<li><strong>可以构成集成电路的最小功能单元</strong></li>
+<li>最具代表性的器件：场效应晶体管</li>
+<li><strong>晶体管是组成集成电路的最基本单元</strong></li>
+<li>微电子学的核心研究内容之一就是如何实现更小尺寸的晶体管</li>
+<li>特征尺寸缩小带来的优势：<ul>
+<li>集成电路速度提高</li>
+<li>芯片上集成电路器件数增大</li>
+<li>集成电路的功能提高</li>
+<li>单位晶体管成本降低</li>
+</ul>
+</li>
+</ul>
+<h3 id="如何制造一块芯片"><a href="#如何制造一块芯片" class="headerlink" title="如何制造一块芯片"></a>如何制造一块芯片</h3><ul>
+<li>集成电路芯片制造过程：切成硅片-&gt;晶圆制造-&gt;硅片测试-&gt;封装</li>
+<li>黄光：腐蚀</li>
+</ul>
+<h3 id="电路模型和电路定律-1"><a href="#电路模型和电路定律-1" class="headerlink" title="电路模型和电路定律"></a>电路模型和电路定律</h3><ul>
+<li><strong>电路是由电器器件构成，并具有一定功能的连接整体</strong></li>
+<li><strong>一个实际电路可以由多个理想原件的组合来模拟，这样的电路称为电路模型</strong></li>
+</ul>
+<h4 id="电流和电压的参考方向"><a href="#电流和电压的参考方向" class="headerlink" title="电流和电压的参考方向"></a>电流和电压的参考方向</h4><ol>
+<li><strong>电流</strong>：带电粒子的有序运动形成电流。电流既是一种物理现象，同时也是一个表征带电粒子有秩序运动的强弱的物理量。</li>
+</ol>
+<ul>
+<li><strong>电流定义</strong>：单位时间内通过导体横截面的电荷量成为电流强度，简称电流，用$i$表示。</li>
+<li>直流：电流的大小和方向都不随时间改变</li>
+<li>习惯上把正电荷运用的方向规定为电流的方向</li>
+</ul>
+<ol>
+<li><strong>电压</strong>：电路中任意两点间的电压等于这两点的点位之差，等于单位正电荷由$a$点经过任意路径运动到$b$点时，该电荷获得或失去的能量。</li>
+</ol>
+<ul>
+<li>习惯上将电位降落的方向规定为电压的方向</li>
+<li>电位U：与”参考点“（零电位点）之间的电压</li>
+</ul>
+<ol>
+<li><strong>关联参考方向</strong><ul>
+<li>电流和电压的参考方向可任意选定，两者独立无关。</li>
+<li>关联参考方向：电流、电压方向一致</li>
+<li>非关联参考方向：电流、电压方向不一致</li>
+</ul>
+</li>
+</ol>
+<h4 id="电功率和能量"><a href="#电功率和能量" class="headerlink" title="电功率和能量"></a>电功率和能量</h4><ul>
+<li>能量：根据电压的定义(A,B两点的电压值在量值上等于电场力将单位正电荷由A点移动到B点时所做的功),$t_0$到$t$的时间内<script type="math/tex; mode=display">
+w=\int_{q(t_0)}^{q(t)}udq \\
+i=\frac{dp}{dt}\\
+w=\int_0^t u(t)i(t)dt</script></li>
+<li><strong>功率：单位时间内能量的变化率。</strong></li>
+<li>元件的吸收电功率可写为<script type="math/tex; mode=display">
+p=\frac{dw}{dt}=\frac{dw}{dq}\cdot\frac{dq}{dt}=u(t)i(t)</script></li>
+<li>在电压、电流为关联参考方向下：<br>$u,i$同号，$p&gt;0$，元件吸收功率，<br>$u,i$异号，$p&lt;0$，元件释放功率。</li>
+<li>在非关联参考方向下：<br>$u,i$同号，$p&gt;0$，元件释放功率，<br>$u,i$异号，$p&lt;0$，元件吸收功率。</li>
+</ul>
+<h4 id="电路元件"><a href="#电路元件" class="headerlink" title="电路元件"></a>电路元件</h4><ul>
+<li><strong>电路元件是电路中最基本的组成单元</strong></li>
+<li>集总参数元件假定：在任何时候，流入二端元件的一个端子的电流一定等于从另一个端子流出的电流，两个端子之间的电压为单值量。</li>
+</ul>
+<h4 id="电阻元件"><a href="#电阻元件" class="headerlink" title="电阻元件"></a>电阻元件</h4><ul>
+<li>线性电阻：在电压和电流取关联参考方向下，在任何时刻它两端的电压和电流关系服从欧姆定律$u=Ri$</li>
+<li>电阻$R$是正实数，单位欧姆$\Omega$</li>
+<li>令$G=1/R$,则$i=Gu$。G是电导，单位：西门子(S)</li>
+<li>无源元件：在不需要外加电源的条件下，就可以显示其特性的电子元件。</li>
+<li>电阻元件一般把吸收的电能转换成热能消耗掉</li>
+</ul>
+<h4 id="电容元件"><a href="#电容元件" class="headerlink" title="电容元件"></a>电容元件</h4><ul>
+<li>$q=Cu$</li>
+<li>电容单位为$F$(法拉)</li>
+<li>电流$i$和电压$u$取关联方向，则有<script type="math/tex; mode=display">
+i=\frac{dq}{dt}=\frac{dCu}{dt}=C\frac{du}{dt}</script></li>
+<li>电容的电流与电压的变化率成正比。直流情况下电压恒定，电压变化率为零，电流为零，所以电容有隔断直流的作用。</li>
+<li>电容是一个动态元件，电容电压除与0到$t$的电流值有关外，还与$u(0)$有段，因此，<strong>电容是一种有”记忆“的元件</strong>。</li>
+<li>电容吸收的能量以电场能量的形式存储在元件中。</li>
+<li>电容是储能元件，不产生能量，无源元件</li>
+</ul>
+<h4 id="电感元件"><a href="#电感元件" class="headerlink" title="电感元件"></a>电感元件</h4><ul>
+<li>磁通：$\Phi_L$,磁通链$\psi_L=n\Phi_L$</li>
+<li>对于线性非时变电感元件有：$\psi(t)=Li(t)$</li>
+<li>L称为电感或自感，是一个正实常数。与回路形状、大小、匝数及周围介质的磁导率有关。</li>
+<li>磁通链的单位是Wb(韦伯)</li>
+<li>根据电磁感应定律<script type="math/tex; mode=display">
+u=\frac{d\phi_L}{dt}=L\frac{di}{dt}</script></li>
+<li>吸收的能量以磁场能量的形式存储在元件中，所以电感元件是储能元件</li>
+<li>不会释放出多于吸收或存储的能量，电感是无源元件。</li>
+</ul>
+<h4 id="电压源和电流源"><a href="#电压源和电流源" class="headerlink" title="电压源和电流源"></a>电压源和电流源</h4><ul>
+<li>电压源：理想电路元件，电压是时间的函数，与外电路无关，电压源中电流的大小由外电路决定。</li>
+<li>电流源：端电压由外电路决定，通过电流源的电流与电压无关</li>
+<li>受控源：电压控制电路元(VCVS)，电压控制电流源(VCCS)，电流控制电压源(CCVS)，电流控制电流源(CCCS)。</li>
+<li><strong>独立电源：作为电源或输入信号，在电路中起“激励”作用，在电路中产生电流和电压，这些电流和电压就是”响应”。这类电源称为独立电源。</strong></li>
+<li>受控电压源的电压或受控电流源的电流受电路中某部分电压或电流控制，因此受控源又称为“非独立”电源。</li>
+</ul>
+<h4 id="基尔霍夫定律"><a href="#基尔霍夫定律" class="headerlink" title="基尔霍夫定律"></a>基尔霍夫定律</h4><ul>
+<li>集总电路（Lumped circuit）：在一般的电路分析中，电路的所有参数，如阻抗、容抗、感抗都集中于空间的各个点上、各个元件上，各点之间的信号是瞬间传递的，这种理想化的电路模型称为集总电路。<br>——来自百度百科</li>
+<li>支路：组成电路的每一个二端元件称为一条支路</li>
+<li>节点：支路的连接点称为节点</li>
+<li>回路：由支路构成的闭合路径称为回路</li>
+<li><strong>基尔霍夫电流定律（KCL）</strong>：在集总电路中，任何时刻，对任一节点，所有流出节点的支路电流的代数和恒等于零。KCL是电荷守恒的体现。</li>
+<li><strong>基尔霍夫电压定律（KVL）</strong>：在集总电路中，任何时刻，沿任一回路所有支路电压的代数和恒等于零。KVL实质上是电路与路径无关这一性质的反映。</li>
+</ul>
+<h3 id="电阻电路的等效变换"><a href="#电阻电路的等效变换" class="headerlink" title="电阻电路的等效变换"></a>电阻电路的等效变换</h3><ul>
+<li><strong>等效电路</strong>：对电路的一部分进行简化，用简化的电路替代原电路。代换与被代换部分的电压、电流关系相同。这两部分电路互称等效电路。</li>
+<li>电阻串并联：。。。。。。</li>
+<li>电压源、电流源的串并联：<script type="math/tex; mode=display">
+u_s=u_{s1}+u_{s2}+...u_{sn}=\sum_{k=1}^n u_{sk}</script>n个电压源串联，可等效为一个电压源。<script type="math/tex; mode=display">
+i_s=i_{s1}+i_{s2}+...+i_{sn}=\sum_{k=1}^n i_{sk}</script>n个电流源并联，可等效为一个电流源。</li>
+<li>只有<strong>电压相等极性一致</strong>的电压源才允许并联，等效电路为其中任一电压源。</li>
+<li>只有<strong>电流相等且方向一致的</strong>电流源才允许串联，等效电路为其中任一电流源。</li>
+<li>实际电源的两种模型及其等效变换：电压源$(u_s)$与电阻$(R)$串联等效为电流源$(i_s)$与电阻$(G)$并联。<script type="math/tex; mode=display">
+G=\frac{1}{R}\quad i_S=Gu_S</script></li>
+<li>实际电压源、实际电流源两种模型可以进行等效变换，所谓等效是指端口的电压、电流在转换过程中保持不变。</li>
+<li>含受控电路的输入电阻：受控电压源与电阻串联等效为受控电流源与电阻的并联。</li>
+<li>当一端口无源网络内含有受控源时，可以采用外加电压法或者外加电流法求得输入电阻。</li>
+</ul>
+<h3 id="电阻电路的一般分析"><a href="#电阻电路的一般分析" class="headerlink" title="电阻电路的一般分析"></a>电阻电路的一般分析</h3><h4 id="电路的图"><a href="#电路的图" class="headerlink" title="电路的图"></a>电路的图</h4><ol>
+<li>线图：用线段来代替电路中的每个元件，线段称为支路，线段的端点称为结点，这样的以线、点组成的几何结构图称为线图或拓扑图，简称图，用$G$表示。</li>
+<li>树、树支、连支<br>树：包含图$G$的全部节点和部分支路，本身是连通的，不包含回路，以$T$表示。<br>构成树的各支路叫树支，树支树等于节点数减1。除树支外的其他支路称为连支。<br>$n$个结点，$b$条支路，则树支树$t$为<script type="math/tex; mode=display">
+t=n-1</script>连支树$l=b-t=b-n+1$</li>
+<li><strong>对于具有$n$个节点的电路，KCL独立方程数为$(n-1)$个。KVL独立方程数等于它的独立回路数。独立回路数等于连支数。</strong></li>
+</ol>
+<h4 id="支路电流法"><a href="#支路电流法" class="headerlink" title="支路电流法"></a>支路电流法</h4><ul>
+<li>有b条支路的电路，以b条支路电流作为变量，应用基尔霍夫定律列出b个独立的电路方程，联立求解出各支路电流。简单地说，支路电流法就是以支路电流作为电路变量的求解方法。</li>
+</ul>
+<h3 id="电路定理"><a href="#电路定理" class="headerlink" title="电路定理"></a>电路定理</h3><h4 id="叠加定理"><a href="#叠加定理" class="headerlink" title="叠加定理"></a>叠加定理</h4><ul>
+<li>一个具有唯一解的线性电阻电路，任一处的电压（或电流）是各个独立电源单独作用时在该处产生的电压（或电流）的叠加。用公式表示为<script type="math/tex; mode=display">
+x(t)=k_1w_1(t)+k_2w_2(t)+...+k_mw_m(t)</script></li>
+<li>叠加定理适用于线性电路、不适用于非线性电路。</li>
+<li>在叠加的各分电路中，所谓电压源不作用，即其电压置零，就是在该电压源处用短路代替；电流源不作用，就是在该电流源处用开路代替。电路的联接以及所有电阻和受控源都不应变动。</li>
+<li>齐性定理：线性电路中当所有激励都增大或缩小$N$倍，则电路的响应也将增加或缩小$N$倍。</li>
+<li>线性电路的基本性质：若一个电路同时满足叠加性和齐次性，则该电路称为线性电路。反之，线性电路必定同时具有齐次性与叠加性。</li>
+</ul>
+<h4 id="替代定理"><a href="#替代定理" class="headerlink" title="替代定理"></a>替代定理</h4><ul>
+<li>电路中，若已知第$k$条支路的$U,I$分别为$U_k,I_k$，则该支路可以用下列任何一种元件来替代：<ol>
+<li>$U_s=U_k$的电压源；</li>
+<li>$I_s=I_k$的电流源。<br>注：如果第$k$支路中的电压或电流为$N$中受控源的控制量，则该支路不能被替代。</li>
+</ol>
+</li>
+</ul>
+<h4 id="戴维宁定理和诺顿定理"><a href="#戴维宁定理和诺顿定理" class="headerlink" title="戴维宁定理和诺顿定理"></a>戴维宁定理和诺顿定理</h4><ul>
+<li>戴维宁定理：一个含独立电源、线性电阻和受控源的一端口，对外电路来说，可以用一个电压源与一个电阻的串联组合来等效。其中电压源的电压等于一端口的开路电压$U_{oc}$，电阻等于一端口的全部独立电源均置零后的输入电阻$R_i$。</li>
+<li>诺顿定理：一个含独立电源、线性电阻和受控源的二端网络，可以等效为一个电流源和电导的并联组合。电流源的电流等于该网络的短路电流，电导等于该网络全部独立电源置零后的输入电导。</li>
+<li>网络可以做戴维宁等效也可以诺顿等效，但在$R_{eq}=0$时只能做戴维宁等效，在$R_{eq}=\infty$时只能做诺顿等效。</li>
+</ul>
+<h3 id="动态电路"><a href="#动态电路" class="headerlink" title="动态电路"></a>动态电路</h3><ul>
+<li>含有动态元件电容和电感的电路称动态电路</li>
+<li>当动态电路状态发生改变时需要经历一个变化过程才能达到新的稳定状态。这个变化过程称为电路的过渡过程。</li>
+<li>过渡过程产生的原因：电路内部含有储能元件$L,C$，电路在换路时能量发生变化，而能量的存储和释放都需要一定的时间来完成。</li>
+<li>含有 一个动态元件电容或电感的线性电路，其电路方程为一阶线性常微分方程，称一阶电路。</li>
+<li>含有二个动态元件的线性电路，其电路方程为二阶线性常微分方程，称二阶电路。</li>
+<li><strong>换路定律：</strong>换路瞬间，若电容电流保持为有限值，则电容电压（电荷）换路前后保持不变。换路瞬间，若电感电压保持为有限值，则电感电流（磁链）换路前后保持不变。</li>
+</ul>
+<h3 id="正弦电路"><a href="#正弦电路" class="headerlink" title="正弦电路"></a>正弦电路</h3><h4 id="正弦量"><a href="#正弦量" class="headerlink" title="正弦量"></a>正弦量</h4><ul>
+<li>瞬时值表达式<script type="math/tex; mode=display">
+i(t)=I_m\cos(\omega t+\psi)</script></li>
+<li>周期$T$和频率$f$<br>周期：重复变化一次所需的时间<br>频率：每秒重复变化的次数</li>
+<li>正弦电流电路：激励和响应均为同频率的正弦量的线性电路（正弦稳态电路）称为正弦电路或交流电路。</li>
+<li><strong>频谱</strong>：将一个信号分解为各种不同频率正弦信号的集合，得到其正弦信号幅值随角频率变化的分布，称为该信号的频谱。</li>
+<li>$i(t)=I_m\cos(\omega t+\psi)$<ol>
+<li>幅值$I_m$<br>反映正弦量变化幅度的大小</li>
+<li>角频率$\omega$<br>相位变化的速度，反映正弦量变化快慢</li>
+<li>初相位$\psi$，规定$|\psi|\leq\pi$<br>反映正弦量的计时起点，常用角度表示</li>
+</ol>
+</li>
+</ul>
+<h4 id="周期性电流、电压的有效值"><a href="#周期性电流、电压的有效值" class="headerlink" title="周期性电流、电压的有效值"></a>周期性电流、电压的有效值</h4><ul>
+<li>周期电流、电压有效值定义（物理意义）：直流$I$，交流$i$<script type="math/tex; mode=display">
+W=RI^2T=\int_0^T Ri(t)^2dt</script></li>
+<li>区分电压、电流瞬时值、最大值、有效值符号：<script type="math/tex; mode=display">
+i，I_m，I，u，U_m，U</script></li>
+</ul>
+<h4 id="正弦稳态电路的功率"><a href="#正弦稳态电路的功率" class="headerlink" title="正弦稳态电路的功率"></a>正弦稳态电路的功率</h4><ul>
+<li>平均功率<script type="math/tex; mode=display">
+P=\frac{1}{T}\int_0^Tpdt</script></li>
+<li>$\varphi=\Psi_u-\Psi_i$：功率因数角。对无源网络，为其等效阻抗的阻抗角</li>
+<li>$\cos\varphi$：功率因数。</li>
+<li>平均功率实际上是电阻消耗的功率，亦称为有功功率，表示电路实际消耗的功率，它不仅与电压有效值有关，而且与$\cos\varphi$有关，这是交流和直流的很大区比，主要由于电压、电流存在相位差。</li>
+<li>无功功率$Q$：<script type="math/tex; mode=display">
+Q=UI\sin\varphi</script>表示交换功率的最大值，单位：var（乏）<br>$Q&gt;0$，表示网络吸收无功功率<br>$Q&lt;0$，表示网络发出无功功率<br>$Q$的大小反映网络与外电路交换功率的大小。是由储能元件$L,C$的性质决定的。</li>
+<li>视在功率（表观功率）$S$，单位$VA$（伏安）<script type="math/tex; mode=display">
+S=UI</script>视在功率反映含源一端口的做功能力，也称表观功率<br>反映电器设备的容量。发电机、变压器等许多电力设备的容量就用$S$表示。</li>
+</ul>
+<h4 id="有功，无功，视在功率的关系："><a href="#有功，无功，视在功率的关系：" class="headerlink" title="有功，无功，视在功率的关系："></a>有功，无功，视在功率的关系：</h4><ul>
+<li>有功功率：$P=UI\cos j$ 单位：$W$</li>
+<li>无功功率：$P=UI\sin j$ 单位：var</li>
+<li>视在功率：$S=UI$ 单位：$VA$</li>
+<li><script type="math/tex; mode=display">
+S=\sqrt{P^2+Q^2}</script></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/微电子/" rel="tag"><i class="fa fa-tag"></i> 微电子</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/09/计算机网络2/" rel="next" title="计算机网络第二章笔记">
+                <i class="fa fa-chevron-left"></i> 计算机网络第二章笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/img.JPG" alt="Marukohe">
+            
+              <p class="site-author-name" itemprop="name">Marukohe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Marukohe" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1502449818@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#电路模型和电路定律"><span class="nav-number">1.</span> <span class="nav-text">电路模型和电路定律</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#从电子计算机说起"><span class="nav-number">1.1.</span> <span class="nav-text">从电子计算机说起</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微电子学与微电子技术的概念"><span class="nav-number">1.2.</span> <span class="nav-text">微电子学与微电子技术的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#集成电路分类"><span class="nav-number">1.2.1.</span> <span class="nav-text">集成电路分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微电子学器件"><span class="nav-number">1.2.2.</span> <span class="nav-text">微电子学器件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何制造一块芯片"><span class="nav-number">1.3.</span> <span class="nav-text">如何制造一块芯片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#电路模型和电路定律-1"><span class="nav-number">1.4.</span> <span class="nav-text">电路模型和电路定律</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#电流和电压的参考方向"><span class="nav-number">1.4.1.</span> <span class="nav-text">电流和电压的参考方向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#电功率和能量"><span class="nav-number">1.4.2.</span> <span class="nav-text">电功率和能量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#电路元件"><span class="nav-number">1.4.3.</span> <span class="nav-text">电路元件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#电阻元件"><span class="nav-number">1.4.4.</span> <span class="nav-text">电阻元件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#电容元件"><span class="nav-number">1.4.5.</span> <span class="nav-text">电容元件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#电感元件"><span class="nav-number">1.4.6.</span> <span class="nav-text">电感元件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#电压源和电流源"><span class="nav-number">1.4.7.</span> <span class="nav-text">电压源和电流源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基尔霍夫定律"><span class="nav-number">1.4.8.</span> <span class="nav-text">基尔霍夫定律</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#电阻电路的等效变换"><span class="nav-number">1.5.</span> <span class="nav-text">电阻电路的等效变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#电阻电路的一般分析"><span class="nav-number">1.6.</span> <span class="nav-text">电阻电路的一般分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#电路的图"><span class="nav-number">1.6.1.</span> <span class="nav-text">电路的图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#支路电流法"><span class="nav-number">1.6.2.</span> <span class="nav-text">支路电流法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#电路定理"><span class="nav-number">1.7.</span> <span class="nav-text">电路定理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#叠加定理"><span class="nav-number">1.7.1.</span> <span class="nav-text">叠加定理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#替代定理"><span class="nav-number">1.7.2.</span> <span class="nav-text">替代定理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#戴维宁定理和诺顿定理"><span class="nav-number">1.7.3.</span> <span class="nav-text">戴维宁定理和诺顿定理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态电路"><span class="nav-number">1.8.</span> <span class="nav-text">动态电路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正弦电路"><span class="nav-number">1.9.</span> <span class="nav-text">正弦电路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#正弦量"><span class="nav-number">1.9.1.</span> <span class="nav-text">正弦量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#周期性电流、电压的有效值"><span class="nav-number">1.9.2.</span> <span class="nav-text">周期性电流、电压的有效值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正弦稳态电路的功率"><span class="nav-number">1.9.3.</span> <span class="nav-text">正弦稳态电路的功率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有功，无功，视在功率的关系："><span class="nav-number">1.9.4.</span> <span class="nav-text">有功，无功，视在功率的关系：</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marukohe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  访问量:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Gw6SuInwfIlhXsnp9cQU216e-gzGzoHsz',
+        appKey: '20X1ggdp2ujxNW9OAxOn0Yhm',
+        placeholder: 'o((>ω< ))o来造作啊',
+        avatar:'mp',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
